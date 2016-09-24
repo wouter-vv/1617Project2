@@ -6,7 +6,7 @@ Project 2 - opvolgingsdocument Academiejaar 2016-2017
 
 Student:	Vande Velde Wouter
 
-Mentor:		<in te vullen door de mentor>
+Mentor:		Peter Demeester
 
 
 =================================================================================
@@ -22,17 +22,24 @@ Een 2D-spelletje voor een Android device gemaakt in Android studio met behulp va
 
 Einddoelen:
 
-1. De student verwerft de kennis hoe een android applicatie ineen zit en begrijpt de opbouw hiervan en kan vlot werken met Android Studio. Er zal hoofdzakelijk gebruik gemaakt worden van Java, de student zal deze taal goed beheersen.
+1. De student verwerft de kennis hoe een android applicatie ineen zit en begrijpt de opbouw hiervan en kan vlot werken met Android Studio. 
+Er zal hoofdzakelijk gebruik gemaakt worden van Java, de student zal deze taal goed beheersen.
+<mentor> Hoe ga je mij dit aantonen in januari? 
+Android Studio is trouwens een IDE als elke andere, zeer speciaal is dat niet. Java wordt je verondersteld te kennen. Ik vind dit geen einddoelen (veel te beperkt).
 
 2. De student begrijpt de nodige fysische wetten zoals zwaartekracht en past deze correct toe.
+<mentor> idem als hierboven. Dit is trouwens geen rocket science ;-) Ga je hiervoor een cursus kinematica volgen? En ga je voor dit vak slagen? 
+Of wat moet ik mij hierbij voorstellen?
 
-3. De student kan correct werken met libgdx ( https://libgdx.badlogicgames.com/ )  en zal de library correct toepassing in de applicatie.
+3. De student kan correct werken met libgdx ( https://libgdx.badlogicgames.com/ )  en zal de library correct toepassen in de applicatie.
+<mentor> hoe ga je bewijzen dat je de lib correct toepast? Ik vermoed dat je dit zal bewijzen door een app te schrijven. 
 
 
 
 Motivatie - betrokkenheid:
 
-Ikzelf speel regelmatig spelletjes waaronder spelletjes op de smartphone, via dit project wil ik de beter begrijpen hoe een Android-applicatie en een spel op een Android-device ineenzitten.
+Ikzelf speel regelmatig spelletjes waaronder spelletjes op de smartphone, via dit project wil ik de beter begrijpen hoe een Android-applicatie en een spel op een 
+Android-device ineenzitten.
 
 Motivatie - grenzen verleggen:
 
@@ -44,6 +51,7 @@ kerndoelen: 1.a, 4,a, 5.c, 8.i 10.n
 
 
 Aan de hand van onlineinformatie begrijpt de student hoe de development omgeving werkt en hoe een android applicatie in elkaar zit. 
+<mentor> ga je een online cursus Android volgen? Meestal kan je dan een certificaat behalen en dit is dan een bewijs dat je Android onder de knie hebt.
 Dit overzicht gebruikt hij om de basis van de app te kunnen leggen en de menus en dergelijke te ontwerpen. 
 Hiervoor wordt er gebruik gemaakt van de uitgebreide informatie op de site van android en verschillende tutorials op het internet.
 Gaandeweg zal een de applicatie vorm krijgen en zal vervolgens zal het dynamisch gedeelte, het spel zelf aan bod komen.
