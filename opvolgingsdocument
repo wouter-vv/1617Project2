@@ -23,10 +23,12 @@ Een 2D-spelletje voor een Android device gemaakt in Android studio met behulp va
 Einddoelen:
 
 1. <Wouter Vande Velde> - <30/09> De student maakt een overzichtsrapport en vergelijking over applicaties op verschillende besturingssystemen.
+<mentor> OK
 
 2. <Wouter Vande Velde> - <30/09> Hij schrijft een afgewerkte Android-applicatie met behulp van libgdx die volgende
 concepten uitgebreid illustreert: collision detection, file i/o naar intern geheugen, graphics met OpenGL ES 2.0, toevoegen van geluid, 
 gebruik maken van verschillende motion gestures,...
+<mentor> ok
 
 3. <Wouter Vande Velde> - <30/09> Hij zal de gebruiker laten inloggen met een google account, gebruik makend van de Google API 
 en een leaderboard voorzien, alsook gebruik makend van de google API.
@@ -42,6 +44,7 @@ Motivatie - grenzen verleggen:
 Een gewone Android-Applicatie leek wat simpel en niet uitgebreid genoeg als project dus lijkt een bewegend en dynamisch spelletje toepasselijker en uitdagender.
 
 Motivatie - professioneel profiel:
+<mentor> kan je dit nog invullen aub? 
 
 kerndoelen: 1.a, 4,a, 5.c, 8.i 10.n
 
