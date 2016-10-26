@@ -16,6 +16,7 @@ public class Tube {
     private static final int FLUCTUATION = 130;
     private static final int GAP = 100;
     private static final int LOWEST = 120;
+    public static final int TUBE_WIDTH = 120;
 
     public Tube( float x ) {
         topTube = new Texture("toptube.png");
@@ -40,5 +41,10 @@ public class Tube {
 
     public Texture getBottomTube() {
         return bottomTube;
+    }
+
+    public void reposition(float x) {
+        posTopTube.set(x, rand.nextInt(FLUCTUATION)+ GAP + LOWEST);
+        posBotTube.set(x, posTopTube.y - GAP - bottomTube.getHeight());
     }
 }
