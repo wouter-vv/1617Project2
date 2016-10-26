@@ -1,4 +1,4 @@
-package com.odisee.game;
+package com.odisee.project2;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

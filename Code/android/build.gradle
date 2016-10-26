@@ -15,7 +15,7 @@ android {
         instrumentTest.setRoot('tests')
     }
     defaultConfig {
-        applicationId "com.odisee.game"
+        applicationId "com.odisee.project2"
         minSdkVersion 8
         targetSdkVersion 24
     }
@@ -68,7 +68,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.odisee.game/com.odisee.game.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.odisee.project2/com.odisee.project2.AndroidLauncher'
 }
 
 // sets up the Android Eclipse project, using the old Ant based build.

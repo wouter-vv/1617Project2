@@ -1,10 +1,10 @@
-package com.odisee.game;
+package com.odisee.project2;
 
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.odisee.game.Game;
+import com.odisee.project2.Game;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
