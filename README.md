@@ -4,5 +4,5 @@ Dit is de repository voor het vak Projecten 2 in het 3de jaar EOICT te Odisee.
 
 Onderwerp van het project is een spelletje op een android device.
 
-Het huidige project is gebaseerd op de tutorial van Brent Aureli.
+Het huidige project is gebaseerd op de tutorial van Brent Aureli, dit is vooral om de basics van de library al programmerend te leren.
 https://www.youtube.com/playlist?list=PLZm85UZQLd2TPXpUJfDEdWTSgszionbJy
