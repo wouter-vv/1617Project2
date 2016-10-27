@@ -1,5 +1,7 @@
 package com.odisee.project2.sprites;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.Rectangle;
@@ -15,6 +17,8 @@ public class Bird {
     private Rectangle bounds;
     private Animation birdAnimation;
     private Texture texture;
+
+    private Sound flap;
 
     private static final int GRAVITY  = -15;
     private static final int MOVEMENT  = 100;
@@ -34,6 +38,7 @@ public class Bird {
         texture = new Texture("birdanimation.png");
         birdAnimation = new Animation(new TextureRegion(texture), 3, 0.5f);
 
+        flap = Gdx.audio.newSound(Gdx.files.internal("sfx_wing.ogg"));
         bounds = new Rectangle(x,y,texture.getWidth()/3,texture.getHeight());
     }
 
@@ -53,6 +58,7 @@ public class Bird {
 
     public void jump() {
         velocity.y=250;
+        flap.play(0.5f);
     }
 
     public Rectangle getBounds() {
@@ -61,5 +67,6 @@ public class Bird {
 
     public void dispose () {
         texture.dispose();
+        flap.dispose();
     }
 }
