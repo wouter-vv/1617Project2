@@ -84,7 +84,7 @@ Logboek
 =================================================================================
 
 26 oktober
-    - project aangemaakt en gesynct naar git.
+    - project aangemaakt en gesynct naar git
     - beginnen aan tutorial
     - verschillende states aangemaakt zoals menu en playstate
     - Een bewegend geheel waarin het vogeltje vliegt en de vleugels animeren
@@ -104,18 +104,19 @@ Eerste tussenrapportering - 29/10/2016
 
 Stand van zaken:
 
-Het project wordt correct en compleet gesyncd naar git (wat toch wel een lastige zaak bleek). Dit betekend dat het gedownload kan worden en uitgevoerd worden op een externe computer.
-Android studio is correct geconfigureerd en het spel kan op de desktop gedraaid worden en de smartphone is ook correct geconfigureerd zodat ook daarop getest kan worden.
+Het project wordt correct en compleet gesyncd naar git (wat toch wel een lastige zaak bleek). Dit betekend dat het gedownload kan worden en 
+uitgevoerd worden op een andere computer.
+Android studio is correct geconfigureerd en het spel kan op de desktop gedraaid worden en mijn smartphone is ook correct geconfigureerd zodat ook daarop getest kan worden.
 De tutorial is afgewerkt en de basics zijn onder de knie. 
 De applicatie is op dit moment een werkende, maar nog niet afgewerkte, versie van Flappy bird waarin het spel deftig gespeeld kan worden. 
 Er zijn ook al verschillende states in aanwezig zoals de menustate en playstate maar deze moeten nog verder afgewerkt worden.
-Kort gezegd is de alle voorbereiding afgerond en kan er nu gefocust worden op het creeren van de applicatie.
+Kort gezegd is de alle voorbereiding afgerond en kan er nu gefocust worden op het creëren van de applicatie.
 
 Reflectie:
 
-De aanpak werkt goed, ik snap tot nu toe alles wat gebruikt wordt in de tutorial en het meeste zal ook van toepassing 
+De aanpak werkt goed, ik snap tot nu toe alles wat aangehaald wordt in de tutorial en het meeste zal ook van toepassing 
 zijn in de applicatie die ik zal maken. Hetgene dat nu al gerealiseerd is, is al een mooie applicatie.
-De motivatie kwam redelijk laat om aan het project te beginnen maar nu ik eenmaal begonnen ben en het wat snap, is de goesting teruggekomen.
+De motivatie kwam redelijk laat om aan het project te beginnen maar nu ik eenmaal begonnen ben en het wat snap, is de motivatie toch gekomen.
 
 
 
