@@ -61,54 +61,60 @@ Uiteindelijk zal inloggen via google mogelijk gemaakt worden en zal ook een lead
 
 
 =================================================================================
-Planning - <datum van eerste ingave> (op te stellen nadat je voorstel is goedgekeurd)
+Planning - 7/10/2016
 =================================================================================
 
-Eerst en vooral zal ik aan de hand van een tutorial zelf een spelletje maken. Dit spelletje omvat alle basics van de library en alle basics die nodig zijn 
-om een spelletje te maken zoals collision detection, textures, ...
-Eens de basics onder de knie zijn, zal ik aan het spel zelf beginnen. 
-Tijdens de eerste weken wordt er ook al gedacht aan hoe het spel eruit zal zien en hoe het ineen zal zitten.
-Eens het spel compleet is zal er uiteindelijk het scorebord en het inloggen toegevoegd worden.
+30 oktober
+    - onderdelen van de library die nodig zijn voor de applicatie begrijpen en kunnen toepassen
+    - idee hebben voor hoe het spel er zal uitzien, wat zal gemaakt worden
+
+30 november
+    - applicatie zelf grotendeels afwerken
+    - audio toevoegen
+    - overzichtsrapport deels afwerken (einddoel 1)
+
+15 december
+    - toevoegen van google scorebord en inloggen
+    - overzichtsrapport afwerken
+    
 
 
 =================================================================================
 Logboek
 =================================================================================
 
-<Noteer hier je activiteiten, gevonden informatie, behaalde milestones, 
-belangrijke gebeurtenissen, problemen, oplossingen...
-Zet voor elke nieuwe entry op een aparte lijn je naam en de datum.
-Als je dat wil, mag je de zuiver technische informatie in een aanvullend 'technisch logboek'
-bijhouden (binnen je repository). In dat geval kan je hier bij de verschillende entries verwijzen
-naar dat technisch logboek.>
+26 oktober
+    - project aangemaakt en gesynct naar git.
+    - beginnen aan tutorial
+    - verschillende states aangemaakt zoals menu en playstate
+    - Een bewegend geheel waarin het vogeltje vliegt en de vleugels animeren
 
-
-
-
-
-
-
-
-
-
-
+27 oktober
+    - collision detection
+    - begrijpen hoe memory leaks te voorkomen
+    - audio toevoegen
+    
+28 oktober
+    - voorbeeld afgewerkt
+    
 
 =================================================================================
-Eerste tussenrapportering - <datum van ingave>
+Eerste tussenrapportering - 29/10/2016
 =================================================================================
 
 Stand van zaken:
 
-Het project wordt correct gesyncd naar git (wat toch wel een lastige zaak bleek),.
+Het project wordt correct en compleet gesyncd naar git (wat toch wel een lastige zaak bleek). Dit betekend dat het gedownload kan worden en uitgevoerd worden op een externe computer.
 Android studio is correct geconfigureerd en het spel kan op de desktop gedraaid worden en de smartphone is ook correct geconfigureerd zodat ook daarop getest kan worden.
 De tutorial is afgewerkt en de basics zijn onder de knie. 
 De applicatie is op dit moment een werkende, maar nog niet afgewerkte, versie van Flappy bird waarin het spel deftig gespeeld kan worden. 
-Er zijn ook al verschillende states in aanwezig zoals de menustate en playstate maar beide moeten nog verder afgewerkt worden.
+Er zijn ook al verschillende states in aanwezig zoals de menustate en playstate maar deze moeten nog verder afgewerkt worden.
+Kort gezegd is de alle voorbereiding afgerond en kan er nu gefocust worden op het creeren van de applicatie.
 
 Reflectie:
 
 De aanpak werkt goed, ik snap tot nu toe alles wat gebruikt wordt in de tutorial en het meeste zal ook van toepassing 
-zijn in de applicatie die ik zal maken. Hetgene dat nu al gerealiseerd is, is al een mooie applicatie maar zeker nog niet voldoende.
+zijn in de applicatie die ik zal maken. Hetgene dat nu al gerealiseerd is, is al een mooie applicatie.
 De motivatie kwam redelijk laat om aan het project te beginnen maar nu ik eenmaal begonnen ben en het wat snap, is de goesting teruggekomen.
 
 
@@ -117,10 +123,10 @@ Zelfevaluatie:
 
 Nieuw verworven kennis          A
 Toepassing aangetoont           B
-Planning                        D
+Planning                        B
 Analyse noden                   NVT
-initiatief - inzet              B
-rapportering                    C
+initiatief - inzet              C
+rapportering                    B
 
 
 
