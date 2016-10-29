@@ -64,7 +64,11 @@ Uiteindelijk zal inloggen via google mogelijk gemaakt worden en zal ook een lead
 Planning - <datum van eerste ingave> (op te stellen nadat je voorstel is goedgekeurd)
 =================================================================================
 
-<Hou hier je werkplanning bij, op te stellen nadat je voorstel is goedgekeurd>
+Eerst en vooral zal ik aan de hand van een tutorial zelf een spelletje maken. Dit spelletje omvat alle basics van de library en alle basics die nodig zijn 
+om een spelletje te maken zoals collision detection, textures, ...
+Eens de basics onder de knie zijn, zal ik aan het spel zelf beginnen. 
+Tijdens de eerste weken wordt er ook al gedacht aan hoe het spel eruit zal zien en hoe het ineen zal zitten.
+Eens het spel compleet is zal er uiteindelijk het scorebord en het inloggen toegevoegd worden.
 
 
 =================================================================================
@@ -95,20 +99,29 @@ Eerste tussenrapportering - <datum van ingave>
 
 Stand van zaken:
 
-<Geef hier een korte stand van zaken van wat er gebeurd is sinds de start: 
-Wat is er gerealiseerd? Wat moet nog gebeuren? Wat zijn bijzondere gebeurtenissen?
-Wat zijn problemen die je nog moet oplossen?>
+Het project wordt correct gesyncd naar git (wat toch wel een lastige zaak bleek),.
+Android studio is correct geconfigureerd en het spel kan op de desktop gedraaid worden en de smartphone is ook correct geconfigureerd zodat ook daarop getest kan worden.
+De tutorial is afgewerkt en de basics zijn onder de knie. 
+De applicatie is op dit moment een werkende, maar nog niet afgewerkte, versie van Flappy bird waarin het spel deftig gespeeld kan worden. 
+Er zijn ook al verschillende states in aanwezig zoals de menustate en playstate maar beide moeten nog verder afgewerkt worden.
 
 Reflectie:
 
-<Hoe werkt je aanpak? Waar had je achteraf gezien beter anders te werk kunnen gaan?
-Hoe ga je eventueel bijsturen? Welke aanpassingen zijn er nodig in je planning?>
+De aanpak werkt goed, ik snap tot nu toe alles wat gebruikt wordt in de tutorial en het meeste zal ook van toepassing 
+zijn in de applicatie die ik zal maken. Hetgene dat nu al gerealiseerd is, is al een mooie applicatie maar zeker nog niet voldoende.
+De motivatie kwam redelijk laat om aan het project te beginnen maar nu ik eenmaal begonnen ben en het wat snap, is de goesting teruggekomen.
+
 
 
 Zelfevaluatie:
 
-<Geef jezelf hier een score (gaande van 'NVT' tot 'A') voor de items die in het 
-evaluatiedocument een witte achtergrond hebben>
+Nieuw verworven kennis          A
+Toepassing aangetoont           B
+Planning                        D
+Analyse noden                   NVT
+initiatief - inzet              B
+rapportering                    C
+
 
 
 Feedback vanwege mentor - <datum van ingave>:
