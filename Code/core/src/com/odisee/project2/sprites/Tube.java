@@ -14,9 +14,9 @@ public class Tube {
     private Texture topTube, bottomTube;
     private Vector2 posTopTube, posBotTube;
     private Random rand;
-    private static final int FLUCTUATION = 130;
+    private static final int FLUCTUATION = 150;
     private static final int GAP = 100;
-    private static final int LOWEST = 120;
+    private static final int LOWEST = 30;
     public static final int TUBE_WIDTH = 120;
 
     private Rectangle boundsTop, boundsBot;
