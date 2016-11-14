@@ -8,18 +8,23 @@ import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.odisee.project2.Game;
 
-public class AndroidLauncher extends AndroidApplication  {
-	ActionResolver actionResolverAndroid;
+public class AndroidLauncher extends AndroidApplication implements Game.MyGameCallback  {
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		actionResolverAndroid= new ActionResolverAndroid(this);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new Game(actionResolverAndroid), config);
+		// create an instance of MyGame, and set the callback
+		Game myGame = new Game();
+		// Since AndroidLauncher implements MyGame.MyGameCallback, we can just pass 'this' to the callback setter.
+		myGame.setMyGameCallback(this);
+
+		initialize(new Game(), config);
 	}
-	public void startLogingActivity(Context context) {
-		/*Intent myIntent = new Intent(AndroidLauncher.this, LoginActivity.class);
-		myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		context.startActivity(myIntent);*/
+
+	@Override
+	public void onStartActivityA() {
+		Intent intent = new Intent(this, GoogleLoginActivity.class);
+		startActivity(intent);
 	}
+
 }

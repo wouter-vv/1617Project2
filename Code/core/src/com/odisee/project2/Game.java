@@ -14,24 +14,38 @@ import com.odisee.project2.states.MenuState;
 public class Game extends ApplicationAdapter {
 	public static final int WIDTH = 480;
     public static final int HEIGHT = 800;
-	public ActionResolver actionResolver;
 
     public static final String TITLE = "Game";
 
-    private GameStateManager gsm;
+	// Define an interface for your various callbacks to the android launcher
+	public interface MyGameCallback {
+		public void onStartActivityA();
+	}
+
+	// ** Additional **
+	// Setter for the callback
+	public void setMyGameCallback(MyGameCallback callback) {
+		myGameCallback = callback;
+	}
+
+	// Local variable to hold the callback implementation
+	public static MyGameCallback myGameCallback;
+
+
+	private GameStateManager gsm;
     private SpriteBatch batch;
 	Texture img;
 
 	private Music music;
 
-	public Game(ActionResolver actionResolver) {
-		this.actionResolver = actionResolver;
+	public Game() {
+
 	}
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-        gsm = new GameStateManager(actionResolver);
+        gsm = new GameStateManager();
 		music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
 		music.setLooping(true);
 		music.setVolume(0.1f);

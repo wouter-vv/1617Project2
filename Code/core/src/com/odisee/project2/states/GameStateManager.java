@@ -1,7 +1,6 @@
 package com.odisee.project2.states;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.odisee.project2.ActionResolver;
 
 import java.util.Stack;
 
@@ -11,10 +10,8 @@ import java.util.Stack;
 
 public class GameStateManager {
     private Stack<State> states;
-    ActionResolver actionResolver;
 
-    public GameStateManager(ActionResolver actionResolver) {
-        this.actionResolver = actionResolver;
+    public GameStateManager() {
         states = new Stack<State>();
 
     }
