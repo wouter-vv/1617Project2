@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "890186516313",
+    "project_id": "project2-f5a95"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890186516313:android:3e74c4bad57a6ac3",
+        "android_client_info": {
+          "package_name": "com.odisee.project2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890186516313-tcoj2kucosjuhlm6tanqfhrlmbu7povr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.odisee.project2",
+            "certificate_hash": "8DCD638DCECF3146C0D0238E78F752976CF4DF13"
+          }
+        },
+        {
+          "client_id": "890186516313-b0k7vgmedulqmpvq8i2hvtr8dk3eru11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeuQI2Cf_LV1L57A-O5-quNcku0AY_pno"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
