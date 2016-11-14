@@ -24,12 +24,14 @@ public class Game extends ApplicationAdapter {
 
 	private Music music;
 
-
+	public Game(ActionResolver actionResolver) {
+		this.actionResolver = actionResolver;
+	}
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-        gsm = new GameStateManager();
+        gsm = new GameStateManager(actionResolver);
 		music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
 		music.setLooping(true);
 		music.setVolume(0.1f);
