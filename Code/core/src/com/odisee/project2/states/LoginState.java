@@ -15,25 +15,14 @@ public class LoginState extends State {
 
     GameStateManager gsm;
     private Texture background;
-    private Texture playBtn, playBtn2;
-    private Rectangle boundsGuest, boundsGoogle;
     public LoginState(GameStateManager gsm) {
-
         super(gsm);
         this.gsm = gsm;
 
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
-        playBtn = new Texture("playbtn.png");
-        playBtn2 = playBtn;
         background = new Texture("bgs.png");
-        boundsGuest = new Rectangle(Game.HEIGHT/2, cam.position.y*2-playBtn.getHeight()*2, playBtn.getWidth()*2, playBtn.getHeight()*2);
-        boundsGoogle = new Rectangle(Game.HEIGHT/2, cam.position.y*2 +10, playBtn.getWidth()*2, playBtn.getHeight()*2);
 
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        //GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-         //       .requestEmail()
-         //       .build();
+        Game.myGameCallback.onStartActivityA();
     }
 
 
@@ -41,14 +30,9 @@ public class LoginState extends State {
     public void handleInput() {
         Vector3 tmp = new Vector3(Gdx.input.getX()/2, Gdx.input.getY()/2, 0);
         if(Gdx.input.justTouched()) {
-            if (boundsGuest.contains(tmp.x, tmp.y)) {
-                //gsm.set(new MenuState(gsm));
-                Game.myGameCallback.onStartActivityA();
+                gsm.set(new MenuState(gsm));
                 cam.unproject(tmp);
-            }
-            if (boundsGoogle.contains(tmp.x, tmp.y)) {
-                System.out.print("---------");
-            }
+
         }
 
     }
@@ -64,15 +48,12 @@ public class LoginState extends State {
         //first open the spritebatch and add everything in it
         sb.begin();
         sb.draw(background,0,0);
-        sb.draw(playBtn, cam.position.x-playBtn.getWidth() / 2,cam.position.y);
-        sb.draw(playBtn2, cam.position.x-playBtn.getWidth() / 2,cam.position.y - playBtn.getHeight()-10);
         sb.end();
     }
 
     @Override
     public void dispose() {
-        /*background.dispose();
-        playBtn.dispose();
-        System.out.println("LoginState disposed");*/
+        background.dispose();
+        System.out.println("LoginState disposed");
     }
 }

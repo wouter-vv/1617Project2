@@ -17,9 +17,9 @@ public class Game extends ApplicationAdapter {
 
     public static final String TITLE = "Game";
 
-	// Define an interface for your various callbacks to the android launcher
+	// interface to call the activity to log in
 	public interface MyGameCallback {
-		public void onStartActivityA();
+		void onStartActivityA();
 	}
 
 	// ** Additional **

@@ -30,12 +30,9 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
     private static final int RC_SIGN_IN = 9001;
 
     private GoogleApiClient mGoogleApiClient;
-    private TextView hello;
-    private Button continueToGame;
+    private TextView hello, who;
+    private Button continueToGame, guest_button;
     private SignInButton sign_in_button;
-    private Button guest_button;
-    private ProgressDialog mProgressDialog;
-    RelativeLayout.LayoutParams rlp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +50,16 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+
         sign_in_button = (SignInButton)findViewById(R.id.sign_in_button);
         guest_button = (Button)findViewById(R.id.guest_button);
         continueToGame = (Button)findViewById(R.id.continueToGame);
-
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.guest_button).setOnClickListener(this);
         findViewById(R.id.continueToGame).setOnClickListener(this);
+
         hello = (TextView)findViewById(R.id.hello);
-        rlp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        who = (TextView)findViewById(R.id.who);
     }
 
     @Override
@@ -73,6 +71,8 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
             case R.id.guest_button:
                 playAsGuest();
                 break;
+            case R.id.continueToGame:
+                this.finish();
         }
     }
 
@@ -99,16 +99,16 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
         }
     }
     private void playAsGuest() {
-        hello.setText("Hello guest!");
+        hello.setText("Hello Guest!");
         endLogin();
 
     }
 
     private void endLogin() {
+        who.setText("Welcome!");
         sign_in_button.setVisibility(View.GONE);
         continueToGame.setVisibility(View.VISIBLE);
         guest_button.setVisibility(View.GONE);
-        rlp.setMargins(50, 0, 0, 0);
     }
 
 
