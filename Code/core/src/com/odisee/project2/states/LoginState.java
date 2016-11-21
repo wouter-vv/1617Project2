@@ -15,9 +15,11 @@ public class LoginState extends State {
 
     GameStateManager gsm;
     private Texture background;
+    private Texture logo;
     public LoginState(GameStateManager gsm) {
         super(gsm);
         this.gsm = gsm;
+        logo = new Texture("logo2.png");
 
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         background = new Texture("bgs.png");
@@ -30,8 +32,8 @@ public class LoginState extends State {
     public void handleInput() {
         Vector3 tmp = new Vector3(Gdx.input.getX()/2, Gdx.input.getY()/2, 0);
         if(Gdx.input.justTouched()) {
-                gsm.set(new MenuState(gsm));
-                cam.unproject(tmp);
+            gsm.set(new MenuState(gsm));
+            cam.unproject(tmp);
 
         }
 
@@ -48,6 +50,7 @@ public class LoginState extends State {
         //first open the spritebatch and add everything in it
         sb.begin();
         sb.draw(background,0,0);
+        sb.draw(logo, cam.position.x-logo.getWidth() / 2,cam.position.y-logo.getHeight() / 2);
         sb.end();
     }
 

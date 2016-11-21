@@ -42,6 +42,10 @@ public class Bird {
         bounds = new Rectangle(x,y,texture.getWidth()/3,texture.getHeight());
     }
 
+    public float getHeight() {
+        return texture.getHeight();
+    }
+
     public void update(float dt) {
         birdAnimation.update(dt);
         if (position.y > 0) {
@@ -59,6 +63,10 @@ public class Bird {
     public void jump() {
         velocity.y=250;
         flap.play(0.5f);
+    }
+
+    public void ceiling() {
+        velocity.y=0;
     }
 
     public Rectangle getBounds() {

@@ -1,0 +1,13 @@
+// Dit bestand is een klad voor bronnen bij te houden.
+
+
+
+
+toevoegen en uitvoeren van activity bij libgdx aangezien libgdx dit niet standaard kan gebruiken 
+		en aangezien google inloggen in de android folder moet gebeuren en dus op een activity
+ - https://carlorodriguez.github.io/blog/2014/10/05/android-platform-specific-code-with-libgdx/
+ 	- http://stackoverflow.com/a/12699721
+
+
+voorbeeld project LibGDX
+ - https://www.youtube.com/playlist?list=PLZm85UZQLd2TPXpUJfDEdWTSgszionbJy
