@@ -71,7 +71,7 @@ public class EndState extends State {
         Vector3 tmp = new Vector3(Gdx.input.getX()/2, Gdx.input.getY()/2, 0);
 
         if(Gdx.input.justTouched()) {
-            gsm.set(new MenuState(gsm));
+            Game.myGameCallback.onStartActivityHighscore();
         }
 
     }

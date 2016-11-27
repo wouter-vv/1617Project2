@@ -22,9 +22,12 @@ public class AndroidLauncher extends AndroidApplication implements Game.MyGameCa
 	}
 
 	@Override
-	public void onStartActivityA() {
+	public void onStartActivityLogin() {
 		Intent intent = new Intent(this, GoogleLoginActivity.class);
 		startActivity(intent);
 	}
-
+	public void onStartActivityHighscore() {
+		Intent intent = new Intent(this, HighscoreActivity.class);
+		startActivity(intent);
+	}
 }

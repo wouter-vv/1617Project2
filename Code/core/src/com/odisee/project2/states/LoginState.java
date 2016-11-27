@@ -3,7 +3,6 @@ package com.odisee.project2.states;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.odisee.project2.Game;
 
@@ -24,7 +23,7 @@ public class LoginState extends State {
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         background = new Texture("bgs.png");
 
-        Game.myGameCallback.onStartActivityA();
+        Game.myGameCallback.onStartActivityLogin();
     }
 
 

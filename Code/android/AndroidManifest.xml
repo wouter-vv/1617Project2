@@ -7,6 +7,13 @@
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="24" />
+    <meta-data
+        android:name="com.google.android.gms.games.APP_ID"
+        android:value="@string/app_id" />
+
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
 
     <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -28,7 +35,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GoogleLoginActivity"></activity>
+        <activity android:name=".GoogleLoginActivity" />
+        <activity android:name=".HighscoreActivity"></activity>
     </application>
 
 </manifest>

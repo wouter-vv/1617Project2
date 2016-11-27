@@ -29,7 +29,7 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
 
-    private GoogleApiClient mGoogleApiClient;
+    public static GoogleApiClient mGoogleApiClient;
     private TextView hello, who;
     private Button continueToGame, guest_button;
     private SignInButton sign_in_button;
@@ -60,6 +60,7 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
 
         hello = (TextView)findViewById(R.id.hello);
         who = (TextView)findViewById(R.id.who);
+        mGoogleApiClient.connect();
     }
 
     @Override
