@@ -129,6 +129,7 @@ public class GoogleLoginActivity extends FragmentActivity implements
 
     private void endLogin() {
         who.setText("Welcome!");
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
         sign_in_button.setVisibility(View.GONE);
         continueToGame.setVisibility(View.VISIBLE);
         guest_button.setVisibility(View.GONE);
