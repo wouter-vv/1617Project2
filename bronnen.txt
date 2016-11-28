@@ -7,7 +7,13 @@ toevoegen en uitvoeren van activity bij libgdx aangezien libgdx dit niet standaa
 		en aangezien google inloggen in de android folder moet gebeuren en dus op een activity
  - https://carlorodriguez.github.io/blog/2014/10/05/android-platform-specific-code-with-libgdx/
  	- http://stackoverflow.com/a/12699721
+ - http://stackoverflow.com/questions/26069759/android-libgdx-calling-another-activity-after-the-game-starts-on-button-click
 
 
 voorbeeld project LibGDX
  - https://www.youtube.com/playlist?list=PLZm85UZQLd2TPXpUJfDEdWTSgszionbJy
+
+
+
+
+http://stackoverflow.com/questions/21814825/you-need-to-use-a-theme-appcompat-theme-or-descendant-with-this-activity

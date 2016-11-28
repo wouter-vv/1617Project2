@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,9 +22,14 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.games.Games;
 
 
-public class GoogleLoginActivity extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+public class GoogleLoginActivity extends FragmentActivity implements
+        View.OnClickListener,
+        GoogleApiClient.OnConnectionFailedListener {
 
 
     private static final String TAG = "SignInActivity";
@@ -31,13 +37,17 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
 
     public static GoogleApiClient mGoogleApiClient;
     private TextView hello, who;
-    private Button continueToGame, guest_button;
+    private Button continueToGame, guest_button, sign_out_button;
     private SignInButton sign_in_button;
+
+    boolean mExplicitSignOut = false;
+    boolean mInSignInFlow = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_login);
+
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -54,13 +64,14 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
         sign_in_button = (SignInButton)findViewById(R.id.sign_in_button);
         guest_button = (Button)findViewById(R.id.guest_button);
         continueToGame = (Button)findViewById(R.id.continueToGame);
+        sign_out_button = (Button)findViewById(R.id.sign_out_button);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.guest_button).setOnClickListener(this);
         findViewById(R.id.continueToGame).setOnClickListener(this);
+        findViewById(R.id.sign_out_button).setOnClickListener(this);
 
         hello = (TextView)findViewById(R.id.hello);
         who = (TextView)findViewById(R.id.who);
-        mGoogleApiClient.connect();
     }
 
     @Override
@@ -73,8 +84,19 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
                 playAsGuest();
                 break;
             case R.id.continueToGame:
-                this.finish();
+                finishAct();
+                break;
+            case R.id.sign_out_button:
+                signOut();
         }
+    }
+
+    private void signOut() {
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+        sign_in_button.setVisibility(View.VISIBLE);
+        continueToGame.setVisibility(View.GONE);
+        guest_button.setVisibility(View.VISIBLE);
+        sign_out_button.setVisibility(View.GONE);
     }
 
     @Override
@@ -110,6 +132,7 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
         sign_in_button.setVisibility(View.GONE);
         continueToGame.setVisibility(View.VISIBLE);
         guest_button.setVisibility(View.GONE);
+        sign_out_button.setVisibility(View.VISIBLE);
     }
 
 
@@ -118,6 +141,11 @@ public class GoogleLoginActivity extends FragmentActivity implements GoogleApiCl
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+
+    public void finishAct() {
+        mGoogleApiClient = null;
+        this.finish();
+    }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
