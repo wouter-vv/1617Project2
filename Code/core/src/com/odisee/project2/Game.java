@@ -20,7 +20,7 @@ public class Game extends ApplicationAdapter {
 	// interface to call the activity to log in
 	public interface MyGameCallback {
 		void onStartActivityLogin();
-		void onStartActivityHighscore();
+		void onStartActivityHighscore(boolean show, int score);
 	}
 
 	// ** Additional **

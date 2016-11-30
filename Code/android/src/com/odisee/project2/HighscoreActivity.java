@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,6 +26,7 @@ public class HighscoreActivity extends FragmentActivity implements
     private GoogleApiClient mGoogleApiClient;
     private Button test;
     private Button test2;
+    private AndroidLauncher al;
 
 
     @Override
@@ -42,7 +44,9 @@ public class HighscoreActivity extends FragmentActivity implements
                 .addApi(Games.API).addScope(Games.SCOPE_GAMES)
                 .build();
         mGoogleApiClient.connect();
-        test.setVisibility(View.VISIBLE);
+        Log.d("t20", "Then Here");
+        //this.finish();
+
     }
     public void setScore(int score) {
         this.score = score;
@@ -56,11 +60,14 @@ public class HighscoreActivity extends FragmentActivity implements
     public void onConnected(@Nullable Bundle bundle) {
 
         if(mGoogleApiClient.isConnected()) {
-            Games.Leaderboards.submitScore(mGoogleApiClient, getString(R.string.leaderboard_id), 50);
-            final int BOARD_REQUEST_CODE = 1;
-            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
-                    mGoogleApiClient, getString(R.string.leaderboard_id)), BOARD_REQUEST_CODE);
-
+            Log.d("t20", "Then Here 2");
+            Games.Leaderboards.submitScore(mGoogleApiClient, getString(R.string.leaderboard_id), al.getScore());
+            Log.d("t20", "Then Here 2");
+            /*final int BOARD_REQUEST_CODE = 1;
+            if(al.isShow()) {
+                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
+                        mGoogleApiClient, getString(R.string.leaderboard_id)), BOARD_REQUEST_CODE);
+            }*/
 
         }
 
@@ -68,11 +75,10 @@ public class HighscoreActivity extends FragmentActivity implements
 
     @Override
     public void onConnectionSuspended(int i) {
-
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        test2.setVisibility(View.VISIBLE);
+
     }
 }

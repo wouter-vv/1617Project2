@@ -14,6 +14,7 @@ import com.odisee.project2.sprites.Tube;
  */
 
 public class PlayState extends State {
+    private final double heightScreen;
     private Bird bird;
     private Texture bg;
     private Tube tube;
@@ -34,18 +35,21 @@ public class PlayState extends State {
     private Texture zero;
     private double score;
 
-    private static final int TUBE_SPACING = 250;
-    private static final int TUBE_COUNT = 6;
-    private static final int GROUND_Y_OFFSET = -90;
+    private static final int TUBE_SPACING = 150;
+    private static final int TUBE_COUNT = 5;
+    //private static final int TUBE_COUNT = 5;
 
     private Array<Tube> tubes;
-    private Texture curNumber;
+    private double addMoving;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
         bird = new Bird(50,0);
+
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         bg = new Texture("bgs.png");
+        ground = new Texture("ground.png");
+
         one = new Texture("1s.png");
         two = new Texture("2s.png");
         three = new Texture("3s.png");
@@ -57,6 +61,8 @@ public class PlayState extends State {
         nine = new Texture("9s.png");
         zero = new Texture("0s.png");
 
+        heightScreen = cam.viewportHeight;
+
         /*ground = new Texture("ground.png");
         groundPos1 = new Vector2(cam.position.x-cam.viewportWidth/2, GROUND_Y_OFFSET);
         groundPos2 = new Vector2(cam.position.x-cam.viewportWidth/2 + ground.getWidth(), GROUND_Y_OFFSET);*/
@@ -64,7 +70,7 @@ public class PlayState extends State {
         tubes = new Array<Tube>();
 
         for (int i = 1; i <= TUBE_COUNT; i++) {
-            tubes.add(new Tube(i * TUBE_SPACING + tube.TUBE_WIDTH));
+            tubes.add(new Tube(i * (TUBE_SPACING + Tube.TUBEWIDTH)+100));
         }
     }
 
@@ -82,22 +88,32 @@ public class PlayState extends State {
     @Override
     public void update(float dt) {
         handleInput();
-        //updateGround();
         bird.update(dt);
         cam.position.x = bird.getPosition().x + 80;
+        addMoving+=0.1;
         for(int i = 0; i<tubes.size;i++) {
             Tube tube = tubes.get(i);
             if (cam.position.x - (cam.viewportWidth / 2) > tube.getPosTopTube().x + tube.getTopTube().getWidth()) {
-                tube.reposition(tube.getPosTopTube().x + (Tube.TUBE_WIDTH + TUBE_SPACING)*TUBE_COUNT);
+                tube.repositionX(tube.getPosTopTube().x + (Tube.TUBEWIDTH + TUBE_SPACING)*TUBE_COUNT );
             }
-
+            if(addMoving >= 62 ) {
+                if(!tube.isMoving()) {
+                    addMoving -= 71;
+                    tube.makeTubesPurple(tube);
+                    tube.setMoving(true);
+                }
+            }
+            if (tube.isMoving()) {
+                tube.repositionY(tube.getPosTopTube().x, tube.getPosTopTube().y);
+            }
+/*
             // if collision, game is over
             if(tube.collides(bird.getBounds())) {
                 gsm.set(new EndState(gsm, (int)score));
-            }
+            }*/
             // bird floats on the ground
-            if(bird.getPosition().y <= bg.getHeight()/20) {
-                bird.getPosition().y = bg.getHeight()/20;
+            if(bird.getPosition().y <= ground.getHeight()) {
+                bird.getPosition().y = ground.getHeight();
             }
             // bird reaches ceiling
             if(bird.getPosition().y >= cam.viewportHeight-bird.getHeight()) {
@@ -159,9 +175,17 @@ public class PlayState extends State {
 
         }
 
-        //sb.draw(ground, groundPos1.x, groundPos1.y);
-        //sb.draw(ground, groundPos2.x, groundPos2.y);
+        sb.draw(ground, cam.position.x - (cam.viewportWidth/2), 0);
         sb.end();
+    }
+
+    /**
+     * get the height of the screen
+     *
+     * @return height of screen
+     */
+    public double getHeightScreen() {
+        return heightScreen;
     }
 
     @Override
@@ -173,17 +197,7 @@ public class PlayState extends State {
             tube.dispose();
         }
 
-
         System.out.println("playstate disposed");
         System.out.println((int)score);
     }
-
-    /*private void updateGround() {
-        if (cam.position.x - (cam.viewportWidth / 2) > groundPos1.x + ground.getWidth()) {
-            groundPos1.add(ground.getWidth()* 2, 0);
-        }
-        if (cam.position.x - (cam.viewportWidth / 2) > groundPos2.x + ground.getWidth()) {
-            groundPos2.add(ground.getWidth()* 2, 0);
-        }
-    }*/
 }

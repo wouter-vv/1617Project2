@@ -9,6 +9,9 @@ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.odisee.project2.Game;
 
 public class AndroidLauncher extends AndroidApplication implements Game.MyGameCallback  {
+
+	private boolean show;
+	private int score;
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,8 +29,18 @@ public class AndroidLauncher extends AndroidApplication implements Game.MyGameCa
 		Intent intent = new Intent(this, GoogleLoginActivity.class);
 		startActivity(intent);
 	}
-	public void onStartActivityHighscore() {
+	public void onStartActivityHighscore(boolean show, int score) {
+		this.show = show;
+		this.score = score;
 		Intent intent = new Intent(this, HighscoreActivity.class);
 		startActivity(intent);
+	}
+
+	public boolean isShow() {
+		return show;
+	}
+
+	public int getScore() {
+		return score;
 	}
 }

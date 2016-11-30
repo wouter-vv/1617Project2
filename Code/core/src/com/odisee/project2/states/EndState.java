@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.odisee.project2.Game;
 
 
@@ -41,6 +42,8 @@ public class EndState extends State {
     private Texture nine;
     private Texture zero;
     private Texture cont;
+    static int OFFSET_Y = 0;
+    private int drawn;
 
     public EndState(GameStateManager gsm, int score) {
         super(gsm);
@@ -59,7 +62,7 @@ public class EndState extends State {
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         GO = new Texture("GO2.png");
         background = new Texture("bgs.png");
-        //bounds = new Rectangle(Game.HEIGHT/2, Game.WIDTH / 2-playBtn.getHeight()*2, playBtn.getWidth()*2, playBtn.getHeight()*2);
+        drawn = 0;
     }
 
 
@@ -70,10 +73,19 @@ public class EndState extends State {
     public void handleInput() {
         Vector3 tmp = new Vector3(Gdx.input.getX()/2, Gdx.input.getY()/2, 0);
 
-        if(Gdx.input.justTouched()) {
-            Game.myGameCallback.onStartActivityHighscore();
-        }
+        if(drawn == 0) {
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {
 
+            }
+            drawn = 1;
+        } else  if (drawn == 1){
+            if (Gdx.input.isTouched()) {
+                Game.myGameCallback.onStartActivityHighscore(false, score);
+                gsm.set(new MenuState(gsm));
+            }
+        }
     }
 
     @Override
@@ -90,40 +102,44 @@ public class EndState extends State {
         sb.draw(GO, cam.position.x-GO.getWidth() / 2,cam.position.y-GO.getHeight()/4);
         String strScore = "" + (int)score;
         int widthStrScore = strScore.length() * 27;
+
         for (int i = 0; i < strScore.length(); i++ ) {
             if (strScore.charAt(i) == 48) {
-                sb.draw(zero, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(zero, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
             else if (strScore.charAt(i) == 49) {
-                sb.draw(one, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(one, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
             else if (strScore.charAt(i) == 50) {
-                sb.draw(two, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(two, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
             else if (strScore.charAt(i) == 51) {
-                sb.draw(three, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(three, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
             else if (strScore.charAt(i) == 52) {
-                sb.draw(four, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(four, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
             else if (strScore.charAt(i) == 53) {
-                sb.draw(five, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(five, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
             else if (strScore.charAt(i) == 54) {
-                sb.draw(six, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(six, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
             else if (strScore.charAt(i) == 55) {
-                sb.draw(seven, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(seven, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
             else if (strScore.charAt(i) == 56) {
-                sb.draw(eight, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(eight, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
             else if (strScore.charAt(i) == 57) {
-                sb.draw(nine, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, 0 + zero.getHeight()*3/2);
+                sb.draw(nine, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
 
         }
-        sb.draw(cont, cam.position.x - cont.getWidth() / 2, 0);
+        // to avoid clicking trough endscreen right away
+        if(drawn == 1) {
+            sb.draw(cont, cam.position.x - cont.getWidth() / 2, 0);
+        }
         sb.end();
     }
 
