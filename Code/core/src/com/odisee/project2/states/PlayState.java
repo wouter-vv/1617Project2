@@ -106,11 +106,12 @@ public class PlayState extends State {
             if (tube.isMoving()) {
                 tube.repositionY(tube.getPosTopTube().x, tube.getPosTopTube().y);
             }
-/*
+
             // if collision, game is over
             if(tube.collides(bird.getBounds())) {
                 gsm.set(new EndState(gsm, (int)score));
-            }*/
+            }
+
             // bird floats on the ground
             if(bird.getPosition().y <= ground.getHeight()) {
                 bird.getPosition().y = ground.getHeight();
