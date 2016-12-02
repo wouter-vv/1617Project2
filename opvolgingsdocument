@@ -82,6 +82,7 @@ Planning - 7/10/2016
 =================================================================================
 Logboek
 =================================================================================
+Evaluatie 1
 
 26 oktober
     - project aangemaakt en gesynct naar git
@@ -96,6 +97,32 @@ Logboek
     
 28 oktober
     - voorbeeld afgewerkt
+    
+----------------------
+Evaluatie 2
+    
+14 november 
+    - start implementatie google login
+    - nieuwe activity oproepen vanuit libgdx
+
+16 november
+    - login afgewerkt en succesvol
+    - login bij startup oproepen
+    
+21 november
+    - score implementeren en tonen tijdens het spelen
+    - endstate toegevoegd
+
+27 november
+    - tweede activity aanroepen voor leaderboard
+    - start games api google toevoegen voor leaderboard
+    - Google Play Developers Console aangemaakt de app gepublished
+
+30 november
+    - update gameplay, buizen bewegen
+    
+2 december
+    - beta versie op de playstore gezet
     
 
 =================================================================================
@@ -141,25 +168,35 @@ Werk regelmatig je logboek bij.
 Veel succes! 
 
 =================================================================================
-Tweede tussenrapportering - <datum van ingave>
+Tweede tussenrapportering - 2/12/2016
 =================================================================================
 
 Stand van zaken:
 
-<Geef hier een korte stand van zaken van wat er gebeurd is sinds vorige tussenrapportering: 
-Wat is er gerealiseerd? Wat moet nog gebeuren? Wat zijn bijzondere gebeurtenissen?
-Wat zijn problemen die je nog moet oplossen?>
+Beide API's (leaderboard=gamesAPI en inloggen) zijn geïmplementeerd in de applicatie. Ik had nadien pas gezien dat de authenticatie al automatisch gebeurd via de games API 
+van google maar heb de authentication API toch laten staan. De Games API zou bovendien volledig moeten werken maar blijkbaar kan deze niet getest worden vanuit een 
+development environment dus weet ik niet zeker of het correct werkt. Dit ga ik zo snel mogelijk testen, vermoedelijk door een beta te lanceren van de app op de playstore.
+Op vlak van de gameplay is alles ook al goed gevorderd, er zijn al bepaalde dingen toegevoegd maar ik plan om er nog extra elementen in te steken (zoals bv bonus coins 
+en wegklikbare obstakels). Er zijn bovendien al google achievements aangemaakt voor tijdens het spelen maar deze zal ik implementeren als ik tijd over heb. 
+Ik ben nog niet begonnen aan het overzichtsrapport, ik wou eerst nog wat werk steken in de applicatie.
 
 Reflectie:
 
-<Hoe werkt je aanpak? Waar had je achteraf gezien beter anders te werk kunnen gaan?
-Hebben vroegere bijsturingen het gewenste effect? Wat wil je nog wijzigen in je aanpak of planning?>
+Ik denk dat het werk redelijk goed vooruit gaat, alles is tot nu toe gelukt. Ik had op vlak van API misschien eerst wat meer opgezocht want blijkbaar heb je de 
+authenticatie API niet meer nodig als je de games API gebruikt. Ik heb ook verschillende keren lang vastgezeten maar telkens heb ik dit kunnen oplossen, zo is het bijvoorbeeld
+zeer lastig om een nieuwe activity op te roepen vanuit LibGDX. De motitie is ook helemaal terug en ik vind het leuk en interresant om aan het project te werken.
 
 
 Zelfevaluatie:
 
-<Geef jezelf hier een score (gaande van 'NVT' tot 'A') voor de items die in het 
-evaluatiedocument een witte achtergrond hebben>
+Nieuw verworven kennis          A
+Toepassing aangetoond           A-B
+Planning                        B
+Analyse noden                   NVT
+initiatief - inzet              A
+rapportering                    B
+
+
 
 
 Feedback vanwege mentor - <datum van ingave>:
