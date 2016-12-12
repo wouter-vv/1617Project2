@@ -44,13 +44,6 @@ public class HighscoreActivity extends FragmentActivity implements
     }
 
     public void initialise () {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
-                .build();
-        mGoogleApiClient.connect();
-        Log.d("t20", "Then Here");
-        //this.finish();
 
         SharedPreferences prefs = this.getSharedPreferences(
                 "com.project2.prefs", Context.MODE_PRIVATE);
@@ -58,6 +51,8 @@ public class HighscoreActivity extends FragmentActivity implements
 
         testt = (TextView)findViewById(R.id.testt);
         testt.setText(currPlayer);
+
+        //showLeaderboard ();
 
 
     }
@@ -72,17 +67,17 @@ public class HighscoreActivity extends FragmentActivity implements
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
-        if(mGoogleApiClient.isConnected()) {
-            Log.d("t20", "Then Here 2");
-            Games.Leaderboards.submitScore(mGoogleApiClient, getString(R.string.leaderboard_id), al.getScore());
-            Log.d("t20", "Then Here 2");
-            /*final int BOARD_REQUEST_CODE = 1;
-            if(al.isShow()) {
-                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
-                        mGoogleApiClient, getString(R.string.leaderboard_id)), BOARD_REQUEST_CODE);
-            }*/
 
-        }
+    }
+    public void submit() {
+        Log.d("t20", "Then Here 2");
+        Games.Leaderboards.submitScore(GoogleLoginActivity.mGoogleApiClient, getString(R.string.leaderboard_id), al.getScore());
+        Log.d("t20", "Then Here 2");
+
+    }
+    public void showLeaderboard () {
+        final int BOARD_REQUEST_CODE = 1;
+        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(GoogleLoginActivity.mGoogleApiClient, getString(R.string.leaderboard_id)), BOARD_REQUEST_CODE);
 
     }
 

@@ -32,6 +32,7 @@ import com.google.android.gms.games.Games;
 
 public class GoogleLoginActivity extends FragmentActivity implements
         View.OnClickListener,
+        GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
 
@@ -52,6 +53,7 @@ public class GoogleLoginActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_login);
+/*
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -62,8 +64,18 @@ public class GoogleLoginActivity extends FragmentActivity implements
         // Build a GoogleApiClient with access to the Google Sign-In API and the
         // options specified by gso.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .enableAutoManage(this */
+/* FragmentActivity *//*
+, this */
+/* OnConnectionFailedListener *//*
+)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+*/
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
                 .build();
 
         sign_in_button = (SignInButton)findViewById(R.id.sign_in_button);
@@ -98,12 +110,13 @@ public class GoogleLoginActivity extends FragmentActivity implements
     }
 
     private void signOut() {
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+        mGoogleApiClient.disconnect();
         sign_in_button.setVisibility(View.VISIBLE);
         continueToGame.setVisibility(View.GONE);
         guest_button.setVisibility(View.VISIBLE);
         sign_out_button.setVisibility(View.GONE);
     }
+/*
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -128,6 +141,7 @@ public class GoogleLoginActivity extends FragmentActivity implements
             hello.setText("Error logging in, try again.");
         }
     }
+    */
     private void playAsGuest() {
         currPlayer = "Guest";
         hello.setText("Hello Guest!");
@@ -135,9 +149,9 @@ public class GoogleLoginActivity extends FragmentActivity implements
 
     }
 
+
     private void endLogin() {
         who.setText("Welcome!");
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
         sign_in_button.setVisibility(View.GONE);
         continueToGame.setVisibility(View.VISIBLE);
         guest_button.setVisibility(View.GONE);
@@ -157,20 +171,34 @@ public class GoogleLoginActivity extends FragmentActivity implements
 
 
     private void signIn() {
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        mGoogleApiClient.connect();
+        if (mGoogleApiClient.isConnected()) {
+            currPlayer = Games.Players.getCurrentPlayer(mGoogleApiClient).getDisplayName();
+            hello.setText("hello " + currPlayer + "!");
+            endLogin();
+        } else {
+            hello.setText("Error logging in, try again or play as guest.");
+        }
     }
 
 
+
     public void finishAct() {
-
-
-        mGoogleApiClient = null;
         this.finish();
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
 
     }
 }
