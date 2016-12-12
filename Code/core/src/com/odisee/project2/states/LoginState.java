@@ -1,6 +1,7 @@
 package com.odisee.project2.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
@@ -12,6 +13,7 @@ import com.odisee.project2.Game;
 
 public class LoginState extends State {
 
+    private Preferences prefs;
     GameStateManager gsm;
     private Texture background;
     private Texture logo;
@@ -19,6 +21,13 @@ public class LoginState extends State {
         super(gsm);
         this.gsm = gsm;
         logo = new Texture("logo2.png");
+
+/*        prefs = Game.getPrefs();
+        int highscore = prefs.getInteger("highscore");
+        if(highscore == 0) {
+            prefs.putInteger("highscore", 0);
+            prefs.putString("highscoreOwner", "no-one");
+        }*/
 
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         background = new Texture("bgs.png");
@@ -56,6 +65,7 @@ public class LoginState extends State {
     @Override
     public void dispose() {
         background.dispose();
+        logo.dispose();
         System.out.println("LoginState disposed");
     }
 }

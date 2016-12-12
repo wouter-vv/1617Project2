@@ -5,7 +5,9 @@ package com.odisee.project2.states;
  */
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -26,6 +28,10 @@ import com.odisee.project2.Game;
  */
 
 public class EndState extends State {
+    private String highscoreOwner;
+    private BitmapFont font;
+    private String currPlayer;
+    private int highscore;
     private Texture background;
     private Texture GO;
     private Rectangle bounds;
@@ -44,10 +50,12 @@ public class EndState extends State {
     private Texture cont;
     static int OFFSET_Y = 0;
     private int drawn;
+    private Preferences prefs;
 
     public EndState(GameStateManager gsm, int score) {
         super(gsm);
         this.score = score;
+        font = new BitmapFont();
         one = new Texture("1s.png");
         two = new Texture("2s.png");
         three = new Texture("3s.png");
@@ -61,8 +69,22 @@ public class EndState extends State {
         cont = new Texture("continue.png");
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         GO = new Texture("GO2.png");
-        background = new Texture("bgs.png");
+        background = new Texture("backgroundSimple.png");
         drawn = 0;
+        currPlayer = "";
+
+        prefs = Game.getPrefs();
+        highscore = prefs.getInteger("highscore");
+        if(score>highscore) {
+            highscoreOwner = "";
+            highscoreOwner = prefs.getString("currPlayer");
+            prefs.putString("highscoreOwner", highscoreOwner);
+            prefs.putInteger("highscore", score);
+            prefs.flush();
+        }
+
+
+
     }
 
 
@@ -71,8 +93,7 @@ public class EndState extends State {
 
     @Override
     public void handleInput() {
-        Vector3 tmp = new Vector3(Gdx.input.getX()/2, Gdx.input.getY()/2, 0);
-
+        // to avoid clicking trough endscreen right away
         if(drawn == 0) {
             try {
                 Thread.sleep(2000);
@@ -95,10 +116,12 @@ public class EndState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
+
         sb.setProjectionMatrix(cam.combined);
         //first open the spritebatch and add everything in it
         sb.begin();
-        sb.draw(background,0,0);
+
+        sb.draw(background,(Game.HEIGHT/2 - background.getWidth())/2,(Game.WIDTH/2 - background.getHeight())/2);
         sb.draw(GO, cam.position.x-GO.getWidth() / 2,cam.position.y-GO.getHeight()/4);
         String strScore = "" + (int)score;
         int widthStrScore = strScore.length() * 27;
@@ -136,17 +159,30 @@ public class EndState extends State {
             }
 
         }
-        // to avoid clicking trough endscreen right away
+        // show continue after a while
         if(drawn == 1) {
             sb.draw(cont, cam.position.x - cont.getWidth() / 2, 0);
         }
+        font.draw(sb, currPlayer, 10,10);
+        font.draw(sb, highscore+"", 10,10);
         sb.end();
     }
 
     @Override
     public void dispose() {
         background.dispose();
+        one.dispose();
+        two.dispose();
+        three.dispose();
+        four.dispose();
+        five.dispose();
+        six.dispose();
+        seven.dispose();
+        eight.dispose();
+        nine.dispose();
+        zero.dispose();
         GO.dispose();
+
         System.out.println("Endstate disposed");
     }
 }

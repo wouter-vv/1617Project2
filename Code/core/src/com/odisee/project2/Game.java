@@ -2,6 +2,7 @@ package com.odisee.project2;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,6 +15,7 @@ import com.odisee.project2.states.MenuState;
 public class Game extends ApplicationAdapter {
 	public static final int WIDTH = 480;
     public static final int HEIGHT = 800;
+	private static Preferences preferences;
 
     public static final String TITLE = "Game";
 
@@ -60,6 +62,13 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         gsm.update(Gdx.graphics.getDeltaTime());
         gsm.render(batch);
+	}
+
+	public static Preferences getPrefs() {
+		if(preferences==null){
+			preferences = Gdx.app.getPreferences("com.project2.prefs");
+		}
+		return preferences;
 	}
 
 	@Override

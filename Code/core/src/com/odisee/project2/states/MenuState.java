@@ -1,6 +1,7 @@
 package com.odisee.project2.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -16,12 +17,14 @@ public class MenuState extends State {
     private Texture background;
     private Texture playBtn;
     private Rectangle bounds;
+    private Rectangle bounds2;
     public MenuState(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         playBtn = new Texture("playbtn.png");
         background = new Texture("bgs.png");
         bounds = new Rectangle(Game.HEIGHT/2, Game.WIDTH / 2-playBtn.getHeight()*2, playBtn.getWidth()*2, playBtn.getHeight()*2);
+        bounds2 = new Rectangle(Game.HEIGHT/2, Game.WIDTH / 2+playBtn.getHeight()-10, playBtn.getWidth()*2, playBtn.getHeight()*2);
     }
 
 
@@ -35,6 +38,12 @@ public class MenuState extends State {
         if(Gdx.input.justTouched()) {
             if (bounds.contains(tmp.x, tmp.y)) {
                 gsm.set(new PlayState(gsm));
+                System.out.println("aaaaaaa");
+                cam.unproject(tmp);
+            }
+            if (bounds2.contains(tmp.x, tmp.y)) {
+                System.out.println("bbbbbbb");
+                gsm.set(new HighscoreState(gsm));
                 cam.unproject(tmp);
             }
         }
@@ -53,6 +62,7 @@ public class MenuState extends State {
         sb.begin();
         sb.draw(background,0,0);
         sb.draw(playBtn, cam.position.x-playBtn.getWidth() / 2,cam.position.y);
+        sb.draw(playBtn, cam.position.x-playBtn.getWidth() / 2,cam.position.y - playBtn.getHeight()-10);
 
 
         sb.end();

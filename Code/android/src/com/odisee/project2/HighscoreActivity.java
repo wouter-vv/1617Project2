@@ -1,6 +1,8 @@
 package com.odisee.project2;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -9,7 +11,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -27,6 +31,7 @@ public class HighscoreActivity extends FragmentActivity implements
     private Button test;
     private Button test2;
     private AndroidLauncher al;
+    private TextView testt;
 
 
     @Override
@@ -46,6 +51,14 @@ public class HighscoreActivity extends FragmentActivity implements
         mGoogleApiClient.connect();
         Log.d("t20", "Then Here");
         //this.finish();
+
+        SharedPreferences prefs = this.getSharedPreferences(
+                "com.project2.prefs", Context.MODE_PRIVATE);
+        String currPlayer= prefs.getString("currPlayer", "blabla");
+
+        testt = (TextView)findViewById(R.id.testt);
+        testt.setText(currPlayer);
+
 
     }
     public void setScore(int score) {

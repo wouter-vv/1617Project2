@@ -2,7 +2,10 @@ package com.odisee.project2;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -42,6 +45,8 @@ public class GoogleLoginActivity extends FragmentActivity implements
 
     boolean mExplicitSignOut = false;
     boolean mInSignInFlow = false;
+    private String currPlayer;
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,7 @@ public class GoogleLoginActivity extends FragmentActivity implements
         findViewById(R.id.guest_button).setOnClickListener(this);
         findViewById(R.id.continueToGame).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
+        currPlayer="blabla";
 
         hello = (TextView)findViewById(R.id.hello);
         who = (TextView)findViewById(R.id.who);
@@ -115,13 +121,15 @@ public class GoogleLoginActivity extends FragmentActivity implements
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            hello.setText("hello " + acct.getDisplayName() + "!");
+            currPlayer = acct.getDisplayName();
+            hello.setText("hello " + currPlayer + "!");
             endLogin();
         } else {
             hello.setText("Error logging in, try again.");
         }
     }
     private void playAsGuest() {
+        currPlayer = "Guest";
         hello.setText("Hello Guest!");
         endLogin();
 
@@ -134,6 +142,17 @@ public class GoogleLoginActivity extends FragmentActivity implements
         continueToGame.setVisibility(View.VISIBLE);
         guest_button.setVisibility(View.GONE);
         sign_out_button.setVisibility(View.VISIBLE);
+        prefs = this.getSharedPreferences(
+                "com.project2.prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("currPlayer", currPlayer);
+        if(prefs.getInt("highscore",0)==0) {
+            editor.putInt("highscore", 1);
+        }
+        if(prefs.getString("highscoreOwner","notCreated").equals("notCreated")) {
+            editor.putString("highscoreOwner", "no owner");
+        }
+        editor.commit();
     }
 
 
@@ -144,6 +163,8 @@ public class GoogleLoginActivity extends FragmentActivity implements
 
 
     public void finishAct() {
+
+
         mGoogleApiClient = null;
         this.finish();
     }

@@ -16,7 +16,7 @@ import com.odisee.project2.sprites.Tube;
 public class PlayState extends State {
     private final double heightScreen;
     private Bird bird;
-    private Texture bg;
+    private Texture background;
     private Tube tube;
     int posXBck1=0,posXBck2=0;
 
@@ -47,7 +47,7 @@ public class PlayState extends State {
         bird = new Bird(50,0);
 
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
-        bg = new Texture("bgs.png");
+        background = new Texture("bgs.png");
         ground = new Texture("ground.png");
 
         one = new Texture("1s.png");
@@ -131,7 +131,7 @@ public class PlayState extends State {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
         // to keep the background on the right place, at the position of the camera
-        sb.draw(bg, cam.position.x - (cam.viewportWidth/2), 0);
+        sb.draw(background, cam.position.x - (cam.viewportWidth/2), 0);
 
         sb.draw(bird.getTexture(), bird.getPosition().x, bird.getPosition().y);
         for (Tube tube : tubes) {
@@ -191,12 +191,23 @@ public class PlayState extends State {
 
     @Override
     public void dispose() {
-        bg.dispose();
+        background.dispose();
         bird.dispose();
-//        ground.dispose();
+        ground.dispose();
         for(Tube tube : tubes ) {
             tube.dispose();
         }
+
+        one.dispose();
+        two.dispose();
+        three.dispose();
+        four.dispose();
+        five.dispose();
+        six.dispose();
+        seven.dispose();
+        eight.dispose();
+        nine.dispose();
+        zero.dispose();
 
         System.out.println("playstate disposed");
         System.out.println((int)score);
