@@ -76,13 +76,17 @@ public class EndState extends State {
         prefs = Game.getPrefs();
         highscore = prefs.getInteger("highscore");
         if(score>highscore) {
-            highscoreOwner = "";
-            highscoreOwner = prefs.getString("currPlayer");
+            highscoreOwner = prefs.getString("currPlayer", "Guest");
             prefs.putString("highscoreOwner", highscoreOwner);
             prefs.putInteger("highscore", score);
-            prefs.flush();
-        }
 
+        }
+        if (!currPlayer.equals("Guest")) {
+            prefs.putString("action", "submit");
+        }
+        highscoreOwner = prefs.getString("currPlayer");
+        prefs.putInteger("currScore", score);
+        prefs.flush();
 
 
     }
@@ -103,7 +107,7 @@ public class EndState extends State {
             drawn = 1;
         } else  if (drawn == 1){
             if (Gdx.input.isTouched()) {
-                Game.myGameCallback.onStartActivityHighscore(false, score);
+                Game.myGameCallback.onStartActivityLogin();
                 gsm.set(new MenuState(gsm));
             }
         }

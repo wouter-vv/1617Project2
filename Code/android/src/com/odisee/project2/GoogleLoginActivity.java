@@ -47,7 +47,9 @@ public class GoogleLoginActivity extends FragmentActivity implements
     boolean mExplicitSignOut = false;
     boolean mInSignInFlow = false;
     private String currPlayer;
-    private SharedPreferences prefs;
+    private static SharedPreferences prefs;
+    private static int start;
+    private Button retry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,23 +75,40 @@ public class GoogleLoginActivity extends FragmentActivity implements
                 .build();
 */
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
-                .build();
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                    .addApi(Games.API).addScope(Games.SCOPE_GAMES)
+                    .build();
+        
+
+
 
         sign_in_button = (SignInButton)findViewById(R.id.sign_in_button);
         guest_button = (Button)findViewById(R.id.guest_button);
         continueToGame = (Button)findViewById(R.id.continueToGame);
         sign_out_button = (Button)findViewById(R.id.sign_out_button);
+        retry = (Button)findViewById(R.id.retry);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.guest_button).setOnClickListener(this);
         findViewById(R.id.continueToGame).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
+        findViewById(R.id.retry).setOnClickListener(this);
         currPlayer="blabla";
 
         hello = (TextView)findViewById(R.id.hello);
         who = (TextView)findViewById(R.id.who);
+
+        if(start == 1 && prefs.getString("action","test").equals("submit")) {
+            mGoogleApiClient.connect();
+            switchToLeaderboard();
+            submit();
+        }
+
+        if(start == 1 && prefs.getString("action","test").equals("showLeaderboard")) {
+            mGoogleApiClient.connect();
+            switchToLeaderboard();
+            showLeaderboard ();
+        }
     }
 
     @Override
@@ -106,42 +125,31 @@ public class GoogleLoginActivity extends FragmentActivity implements
                 break;
             case R.id.sign_out_button:
                 signOut();
+            case R.id.retry:
+                retry();
         }
     }
 
+    public void switchToLeaderboard () {
+        sign_in_button.setVisibility(View.GONE);
+        continueToGame.setVisibility(View.GONE);
+        guest_button.setVisibility(View.GONE);
+        sign_out_button.setVisibility(View.GONE);
+
+        hello.setVisibility(View.GONE);
+        who.setVisibility(View.GONE);
+
+        retry.setVisibility(View.VISIBLE);
+        
+    }
     private void signOut() {
-        mGoogleApiClient.disconnect();
         sign_in_button.setVisibility(View.VISIBLE);
         continueToGame.setVisibility(View.GONE);
         guest_button.setVisibility(View.VISIBLE);
         sign_out_button.setVisibility(View.GONE);
-    }
-/*
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleSignInResult(result);
-        }
+        
     }
 
-    private void handleSignInResult(GoogleSignInResult result) {
-        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
-        if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
-            currPlayer = acct.getDisplayName();
-            hello.setText("hello " + currPlayer + "!");
-            endLogin();
-        } else {
-            hello.setText("Error logging in, try again.");
-        }
-    }
-    */
     private void playAsGuest() {
         currPlayer = "Guest";
         hello.setText("Hello Guest!");
@@ -156,17 +164,6 @@ public class GoogleLoginActivity extends FragmentActivity implements
         continueToGame.setVisibility(View.VISIBLE);
         guest_button.setVisibility(View.GONE);
         sign_out_button.setVisibility(View.VISIBLE);
-        prefs = this.getSharedPreferences(
-                "com.project2.prefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("currPlayer", currPlayer);
-        if(prefs.getInt("highscore",0)==0) {
-            editor.putInt("highscore", 1);
-        }
-        if(prefs.getString("highscoreOwner","notCreated").equals("notCreated")) {
-            editor.putString("highscoreOwner", "no owner");
-        }
-        editor.commit();
     }
 
 
@@ -184,6 +181,21 @@ public class GoogleLoginActivity extends FragmentActivity implements
 
 
     public void finishAct() {
+        start = 1;
+        prefs = this.getSharedPreferences(
+                "com.project2.prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("currPlayer", currPlayer);
+        editor.putString("action", "nothing");
+        editor.putInt("currScore", 0);
+        if(prefs.getInt("highscore",0)==0) {
+            editor.putInt("highscore", 1);
+        }
+        if(prefs.getString("highscoreOwner","notCreated").equals("notCreated")) {
+            editor.putString("highscoreOwner", "no owner");
+        }
+        editor.commit();
+      //  mGoogleApiClient.disconnect();
         this.finish();
     }
 
@@ -201,4 +213,38 @@ public class GoogleLoginActivity extends FragmentActivity implements
     public void onConnectionSuspended(int i) {
 
     }
+
+    public void submit() {
+        if (mGoogleApiClient.isConnected()) {
+            Games.Leaderboards.submitScore(mGoogleApiClient, getString(R.string.leaderboard_id), prefs.getInt("currScore", prefs.getInt("currScore",0)));
+            this.finish();
+        }
+
+    }
+    public void showLeaderboard () {
+        if (mGoogleApiClient.isConnected()) {
+            final int BOARD_REQUEST_CODE = 1;
+            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient, getString(R.string.leaderboard_id)), BOARD_REQUEST_CODE);
+            this.finish();
+        }
+
+    }
+
+    public void retry() {
+        mGoogleApiClient.connect();
+        if(mGoogleApiClient.isConnected()) {
+            retry.setVisibility(View.GONE);
+            if(prefs.getString("action","test").equals("submit")) {
+                submit();
+            }
+
+            if(prefs.getString("action","test").equals("showLeaderboard")) {
+                showLeaderboard ();
+            }
+            //this.finish();
+        }
+
+
+    }
+
 }

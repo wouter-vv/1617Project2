@@ -82,4 +82,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="113dp"></Button>
 
+    <Button
+        android:background="@drawable/button_selector"
+        android:layout_height="wrap_content"
+        android:id="@+id/retry"
+        android:layout_width="200dp"
+        android:layout_centerHorizontal="true"
+        android:text="connect to online leaderboard"
+        android:textSize="15dp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:onClick="goButtonClicked"
+        android:visibility="gone"
+        android:layout_marginTop="65dp"></Button>
+
 </RelativeLayout>

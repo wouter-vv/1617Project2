@@ -71,13 +71,13 @@ public class HighscoreActivity extends FragmentActivity implements
     }
     public void submit() {
         Log.d("t20", "Then Here 2");
-        Games.Leaderboards.submitScore(GoogleLoginActivity.mGoogleApiClient, getString(R.string.leaderboard_id), al.getScore());
+        Games.Leaderboards.submitScore(mGoogleApiClient, getString(R.string.leaderboard_id), al.getScore());
         Log.d("t20", "Then Here 2");
 
     }
     public void showLeaderboard () {
         final int BOARD_REQUEST_CODE = 1;
-        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(GoogleLoginActivity.mGoogleApiClient, getString(R.string.leaderboard_id)), BOARD_REQUEST_CODE);
+        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient, getString(R.string.leaderboard_id)), BOARD_REQUEST_CODE);
 
     }
 

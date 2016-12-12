@@ -74,8 +74,14 @@ public class HighscoreState extends State{
     @Override
     public void handleInput() {
         if (Gdx.input.isTouched()) {
+            Game.myGameCallback.onStartActivityLogin();
             gsm.set(new MenuState(gsm));
         }
+
+        prefs = Game.getPrefs();
+        prefs.putString("action", "showLeaderboard");
+        prefs.flush();
+
     }
 
     @Override
@@ -157,6 +163,8 @@ public class HighscoreState extends State{
         sb.draw(playBtn, cam.position.x-playBtn.getWidth() / 2,cam.viewportHeight - textHeight*18);
         sb.end();
     }
+
+
 
     @Override
     public void dispose() {
