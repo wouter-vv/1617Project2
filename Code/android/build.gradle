@@ -19,9 +19,6 @@ android {
         minSdkVersion 10
         targetSdkVersion 24
     }
-    dependencies {
-        compile 'com.google.android.gms:play-services-auth:9.6.0'
-    }
 }
 
 // called every time gradle gets executed, takes the native dependencies of
