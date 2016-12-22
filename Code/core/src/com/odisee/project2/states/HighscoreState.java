@@ -43,7 +43,7 @@ public class HighscoreState extends State{
 
     public HighscoreState(GameStateManager gsm) {
         super(gsm);
-        font = new BitmapFont();
+        cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         one = new Texture("1s.png");
         two = new Texture("2s.png");
         three = new Texture("3s.png");
@@ -54,12 +54,11 @@ public class HighscoreState extends State{
         eight = new Texture("8s.png");
         nine = new Texture("9s.png");
         zero = new Texture("0s.png");
-        cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         background = new Texture("backgroundSimple.png");
-
         playBtn = new Texture("playbtn.png");
 
         glyphLayout = new GlyphLayout();
+        font = new BitmapFont();
 
         prefs = Game.getPrefs();
         highscoreOwner = prefs.getString("highscoreOwner");
@@ -67,20 +66,18 @@ public class HighscoreState extends State{
         currPlayer = prefs.getString("currPlayer");
     }
 
-
-
-
-
     @Override
     public void handleInput() {
         if (Gdx.input.isTouched()) {
-            Game.myGameCallback.onStartActivityLogin();
+            prefs = Game.getPrefs();
+            if(!prefs.getString("currPlayer", currPlayer).equals("Guest")) {
+                prefs.putString("action", "showLeaderboard");
+                prefs.flush();
+                Game.myGameCallback.onStartActivityLogin();
+            }
             gsm.set(new MenuState(gsm));
         }
 
-        prefs = Game.getPrefs();
-        prefs.putString("action", "showLeaderboard");
-        prefs.flush();
 
     }
 

@@ -7,20 +7,8 @@ package com.odisee.project2.states;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.odisee.project2.Game;
-
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
 import com.odisee.project2.Game;
 
 /**
@@ -29,7 +17,6 @@ import com.odisee.project2.Game;
 
 public class EndState extends State {
     private String highscoreOwner;
-    private BitmapFont font;
     private String currPlayer;
     private int highscore;
     private Texture background;
@@ -47,7 +34,7 @@ public class EndState extends State {
     private Texture eight;
     private Texture nine;
     private Texture zero;
-    private Texture cont;
+    private Texture continueTexture;
     static int OFFSET_Y = 0;
     private int drawn;
     private Preferences prefs;
@@ -55,7 +42,6 @@ public class EndState extends State {
     public EndState(GameStateManager gsm, int score) {
         super(gsm);
         this.score = score;
-        font = new BitmapFont();
         one = new Texture("1s.png");
         two = new Texture("2s.png");
         three = new Texture("3s.png");
@@ -66,7 +52,7 @@ public class EndState extends State {
         eight = new Texture("8s.png");
         nine = new Texture("9s.png");
         zero = new Texture("0s.png");
-        cont = new Texture("continue.png");
+        continueTexture = new Texture("continue.png");
         cam.setToOrtho(false, Game.HEIGHT/2, Game.WIDTH / 2);
         GO = new Texture("GO2.png");
         background = new Texture("backgroundSimple.png");
@@ -107,7 +93,9 @@ public class EndState extends State {
             drawn = 1;
         } else  if (drawn == 1){
             if (Gdx.input.isTouched()) {
-                Game.myGameCallback.onStartActivityLogin();
+                if(!prefs.getString("currPlayer", currPlayer).equals("Guest")) {
+                    Game.myGameCallback.onStartActivityLogin();
+                }
                 gsm.set(new MenuState(gsm));
             }
         }
@@ -165,10 +153,8 @@ public class EndState extends State {
         }
         // show continue after a while
         if(drawn == 1) {
-            sb.draw(cont, cam.position.x - cont.getWidth() / 2, 0);
+            sb.draw(continueTexture, cam.position.x - continueTexture.getWidth() / 2, 0);
         }
-        font.draw(sb, currPlayer, 10,10);
-        font.draw(sb, highscore+"", 10,10);
         sb.end();
     }
 
