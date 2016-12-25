@@ -3,7 +3,6 @@ package com.odisee.project2game.sprites;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.odisee.project2game.Game;
 
 import java.util.Random;
 
@@ -11,14 +10,15 @@ import java.util.Random;
  * Created by Walter on 24/12/2016.
  */
 
-public class Coin {
-    private Texture coin;
-    private Vector2 posCoin;
+public class BadTube {
+    private Texture badTube;
+    private Vector2 posBadTube;
     private Random rand;
     private static final int VALUE_BETWEEN_MINANDMAX = 200;
     public static final int WIDTH = 30;
 
-    private Rectangle boundsCoin;
+    private Rectangle boundsBadTube;
+    private boolean up;
 
 
     /**
@@ -26,16 +26,16 @@ public class Coin {
      *
      * @param x x-axis position of the tube
      */
-    public Coin( float x ) {
-        coin = new Texture("coin.png");
+    public BadTube(float x ) {
+        badTube = new Texture("tubeBlue.png");
         rand = new Random();
         int distBetween = rand.nextInt(8);
         distBetween +=4;
-        posCoin = new Vector2(x*distBetween, rand.nextInt(VALUE_BETWEEN_MINANDMAX));
+        posBadTube = new Vector2(x*distBetween, rand.nextInt(VALUE_BETWEEN_MINANDMAX));
 
 
         // invisible rectangles for collision detection
-        boundsCoin = new Rectangle(posCoin.x,posCoin.y, coin.getWidth(),coin.getHeight());
+        boundsBadTube = new Rectangle(posBadTube.x,posBadTube.y, badTube.getWidth(),badTube.getHeight());
     }
 
     /**
@@ -43,11 +43,11 @@ public class Coin {
      *
      * @return texture topTube
      */
-    public Texture getCoin() {
-        return coin;
+    public Texture getBadTube() {
+        return badTube;
     }
 
-    public void setCoin(Texture coin) { this.coin = coin; }
+    public void setbadTube(Texture coin) { this.badTube = badTube; }
 
 
     /**
@@ -55,8 +55,8 @@ public class Coin {
      *
      * @return x and y of TopTube
      */
-    public Vector2 getPosCoin() {
-        return posCoin;
+    public Vector2 getPosBadTube() {
+        return posBadTube;
     }
 
     /**
@@ -67,9 +67,9 @@ public class Coin {
     public void repositionX(float x) {
         int distBetween = rand.nextInt(8);
         distBetween +=4;
-        posCoin = new Vector2(x*distBetween, rand.nextInt(VALUE_BETWEEN_MINANDMAX));
+        posBadTube = new Vector2(x*distBetween, rand.nextInt(VALUE_BETWEEN_MINANDMAX));
 
-        boundsCoin.setPosition(posCoin.x, posCoin.y);
+        boundsBadTube.setPosition(posBadTube.x, posBadTube.y);
     }
 
 
@@ -80,21 +80,17 @@ public class Coin {
      * @return boolean if a collision has happened
      */
     public boolean collides(Rectangle player) {
-        return player.overlaps(boundsCoin);
+        return player.overlaps(boundsBadTube);
     }
 
     /**
      * method to dispose the textures
      */
     public void dispose () {
-        coin.dispose();
-    }
-
-    public void moveCoin() {
-        posCoin.x += 25;
+        badTube.dispose();
     }
 
     public Rectangle getBounds() {
-        return boundsCoin;
+        return boundsBadTube;
     }
 }

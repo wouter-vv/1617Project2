@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.odisee.project2game.Game;
 
@@ -31,18 +32,16 @@ public class MenuState extends State {
 
     @Override
     public void handleInput() {
-        Vector3 tmp = new Vector3(Gdx.input.getX()/2, Gdx.input.getY()/2, 0);
+        Vector2 tmp = new Vector2(Gdx.input.getX()/2, Gdx.input.getY()/2);
 
         if(Gdx.input.justTouched()) {
             if (bounds.contains(tmp.x, tmp.y)) {
                 gsm.set(new PlayState(gsm));
                 System.out.println("aaaaaaa");
-                cam.unproject(tmp);
             }
             if (bounds2.contains(tmp.x, tmp.y)) {
                 System.out.println("bbbbbbb");
                 gsm.set(new HighscoreState(gsm));
-                cam.unproject(tmp);
             }
         }
 

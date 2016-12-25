@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.odisee.project2game.Game;
+import com.odisee.project2game.sprites.BadTube;
 import com.odisee.project2game.sprites.Bird;
 import com.odisee.project2game.sprites.Coin;
 import com.odisee.project2game.sprites.Tube;
@@ -17,6 +19,7 @@ import com.odisee.project2game.sprites.Tube;
 public class PlayState extends State {
     private final double heightScreen;
     private final Coin coin;
+    private final BadTube badTube;
     private Bird bird;
     private Texture background;
     int posXBck1=0,posXBck2=0;
@@ -43,6 +46,7 @@ public class PlayState extends State {
     private Array<Tube> tubes;
     private double addMoving;
     private boolean coinTaken;
+    private boolean tubeClicked;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -73,6 +77,9 @@ public class PlayState extends State {
         coin  = new Coin((float)(TUBE_SPACING*0.5));
         coinTaken = false;
 
+        badTube = new BadTube((float)(TUBE_SPACING*0.5));
+        tubeClicked = false;
+
         for (int i = 1; i <= TUBE_COUNT; i++) {
             tubes.add(new Tube(i * (TUBE_SPACING + Tube.TUBEWIDTH)+100));
         }
@@ -84,8 +91,27 @@ public class PlayState extends State {
 
     @Override
     protected void handleInput() {
+        Vector2 tmp = new Vector2(Gdx.input.getX()/2, Gdx.input.getY()/2);
         if(Gdx.input.justTouched()) {
-            bird.jump();
+            /**
+             * width of screen is 400, height 240
+             * max value of gdx input is 540 and 956
+             * y-value: (inputvalue * (240/540))
+             * x-value: (inputvalue * (400/956))
+             *      since x-value keeps increasing, substract position of the tube with position of cam
+             * remove 15 points if clicked on tube
+             */
+            if( badTube.getBounds().y < (240-(tmp.y*0.44444)) && badTube.getBounds().y+badTube.getBounds().height > (240-(tmp.y*0.44444))) {
+                if( badTube.getBounds().x - (cam.position.x-200) < (0.4184*tmp.x) && badTube.getBounds().x+ badTube.getBounds().width- (cam.position.x-200) > (0.4184*tmp.x)) {
+                    badTube.repositionX(badTube.getPosBadTube().x + (BadTube.WIDTH));
+                    score -= 15;
+                } else {
+                    bird.jump();
+                }
+            } else {
+                bird.jump();
+            }
+
         }
     }
 
@@ -96,9 +122,14 @@ public class PlayState extends State {
         cam.position.x = bird.getPosition().x + 80;
         addMoving+=0.1;
 
-        if (cam.position.x - (cam.viewportWidth / 2) > coin.getPosCoin().x + coin.getCoin().getWidth() || coinTaken == true) {
+        if (cam.position.x - (cam.viewportWidth / 2) > coin.getPosCoin().x + coin.getCoin().getWidth() || coinTaken) {
             coin.repositionX(coin.getPosCoin().x + (Coin.WIDTH + (int)(TUBE_SPACING*0.5)));
             coinTaken = false;
+        }
+
+        if (cam.position.x - (cam.viewportWidth / 2) > badTube.getPosBadTube().x + badTube.getBadTube().getWidth() || tubeClicked) {
+            badTube.repositionX(badTube.getPosBadTube().x + (BadTube.WIDTH));
+            tubeClicked = false;
         }
 
         for(int i = 0; i<tubes.size;i++) {
@@ -106,6 +137,7 @@ public class PlayState extends State {
             if (cam.position.x - (cam.viewportWidth / 2) > tube.getPosTopTube().x + tube.getTopTube().getWidth()) {
                 tube.repositionX(tube.getPosTopTube().x + (Tube.TUBEWIDTH + TUBE_SPACING)*TUBE_COUNT );
             }
+            // let a tube move every +-62 points
             if(addMoving >= 62 ) {
                 if(!tube.isMoving()) {
                     addMoving -= 71;
@@ -122,22 +154,41 @@ public class PlayState extends State {
                 gsm.set(new EndState(gsm, (int)score));
             }
 
-            // if collision, game is over
-            if(coin.collides(bird.getBounds())) {
-                coinTaken = true;
-                score += 30;
-            }
-
-            // bird floats on the ground
-            if(bird.getPosition().y <= ground.getHeight()) {
-                bird.getPosition().y = ground.getHeight();
-            }
-            // bird reaches ceiling
-            if(bird.getPosition().y >= cam.viewportHeight-bird.getHeight()) {
-                bird.getPosition().y = cam.viewportHeight-bird.getHeight();
-                bird.ceiling();
+            if(tube.collides(coin.getBounds())) {
+                coin.moveCoin();
             }
         }
+
+        // if collision, coinposition resets
+        if(coin.collides(bird.getBounds())) {
+            coinTaken = true;
+        }
+
+        // if collision, game is over
+        if(badTube.collides(bird.getBounds())) {
+            gsm.set(new EndState(gsm, (int)score));
+        }
+
+        // bird floats on the ground
+        if(bird.getPosition().y <= ground.getHeight()) {
+            bird.getPosition().y = ground.getHeight();
+        }
+
+        // bird reaches ceiling
+        if(bird.getPosition().y >= cam.viewportHeight-bird.getHeight()) {
+            bird.getPosition().y = cam.viewportHeight-bird.getHeight();
+            bird.ceiling();
+        }
+
+        if (coinTaken ) {
+            score += 30;
+        }
+
+        if (tubeClicked ) {
+            score -= 15;
+        }
+
+
         score+=0.1;
         cam.update(); // tell gdx that cam is repositioned
     }
@@ -154,6 +205,8 @@ public class PlayState extends State {
             sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
             sb.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
         }
+        sb.draw(coin.getCoin(), coin.getPosCoin().x, coin.getPosCoin().y);
+        sb.draw(badTube.getBadTube(), badTube.getPosBadTube().x, badTube.getPosBadTube().y);
 
         //draw the current score
         String strScore = "" + (int)score;
