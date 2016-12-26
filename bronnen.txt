@@ -1,5 +1,6 @@
 // Dit bestand is een klad voor bronnen bij te houden.
 
+https://play.google.com/store/apps/details?id=com.odisee.project2game
 
 
 
@@ -17,3 +18,5 @@ voorbeeld project LibGDX
 
 
 http://stackoverflow.com/questions/21814825/you-need-to-use-a-theme-appcompat-theme-or-descendant-with-this-activity
+
+
