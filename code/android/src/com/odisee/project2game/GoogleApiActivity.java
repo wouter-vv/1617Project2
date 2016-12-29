@@ -94,10 +94,18 @@ public class GoogleApiActivity extends FragmentActivity implements
                 finishAct();
                 break;
             case R.id.sign_out_button:
-                //signOut();
+                signOut();
             case R.id.retry:
                 retry();
         }
+    }
+
+    private void signOut() {
+       // Games.signOut(mGoogleApiClient);
+        sign_in_button.setVisibility(View.VISIBLE);
+        continueToGame.setVisibility(View.GONE);
+        guest_button.setVisibility(View.VISIBLE);
+        sign_out_button.setVisibility(View.GONE);
     }
 
     /**

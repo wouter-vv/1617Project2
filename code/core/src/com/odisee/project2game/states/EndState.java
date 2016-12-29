@@ -1,10 +1,5 @@
 package com.odisee.project2game.states;
 
-/**
- * Created by Walter on 16/11/2016.
- */
-
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,7 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.odisee.project2game.Game;
 
 /**
- * Created by Walter on 26/10/2016.
+ * Created by Wouter Vande Velde on 26/10/2016.
  */
 
 public class EndState extends State {

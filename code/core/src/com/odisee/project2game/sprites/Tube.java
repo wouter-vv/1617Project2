@@ -8,7 +8,7 @@ import com.odisee.project2game.Game;
 import java.util.Random;
 
 /**
- * Created by Walter on 26/10/2016.
+ * Created by Wouter Vande Velde on 26/10/2016.
  */
 
 public class Tube {

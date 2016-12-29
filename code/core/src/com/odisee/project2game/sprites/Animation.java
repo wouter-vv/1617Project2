@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * Created by Walter on 27/10/2016.
+ * Created by Wouter Vande Velde on 27/10/2016.
  */
 
 public class Animation {

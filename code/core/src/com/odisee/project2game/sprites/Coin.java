@@ -8,7 +8,7 @@ import com.odisee.project2game.Game;
 import java.util.Random;
 
 /**
- * Created by Walter on 24/12/2016.
+ * Created by Wouter Vande Velde on 24/12/2016.
  */
 
 public class Coin {

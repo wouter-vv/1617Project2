@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 /**
- * Created by Walter on 26/10/2016.
+ * Created by Wouter Vande Velde on 26/10/2016.
  */
 
 public class Bird {

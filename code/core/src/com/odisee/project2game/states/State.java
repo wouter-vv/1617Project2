@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 
 /**
- * Created by Walter on 26/10/2016.
+ * Created by Wouter Vande Velde on 26/10/2016.
  */
 
 public abstract class State {

@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.odisee.project2game.Game;
 
 /**
- * Created by Walter on 26/10/2016.
+ * Created by Wouter Vande Velde on 26/10/2016.
  */
 
 public class MenuState extends State {

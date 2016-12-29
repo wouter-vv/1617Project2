@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.odisee.project2game.Game;
 
 /**
- * Created by Walter on 13/11/2016.
+ * Created by Wouter Vande Velde on 13/11/2016.
  */
 
 public class LoginState extends State {

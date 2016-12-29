@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.Stack;
 
 /**
- * Created by Walter on 26/10/2016.
+ * Created by Wouter Vande Velde on 26/10/2016.
  */
 
 public class GameStateManager {
@@ -18,11 +18,6 @@ public class GameStateManager {
 
     public void push(State state) {
         states.push(state);
-    }
-
-    public void pop() {
-        states.pop().dispose();
-
     }
 
     public void set (State state) {

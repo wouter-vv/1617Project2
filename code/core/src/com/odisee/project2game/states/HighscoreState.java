@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.odisee.project2game.Game;
 
 /**
- * Created by Walter on 10/12/2016.
+ * Created by Wouter Vande Velde on 10/12/2016.
  */
 
 public class HighscoreState extends State{
