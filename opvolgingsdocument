@@ -215,14 +215,31 @@ Eindrapportering - <datum van ingave>
 
 Eindrapportering:
 
-<Geef hier een eindstand van wat je bereikt hebt (en wat niet).
-Hierin verwijs je ook naar eventuele bijkomende documenten of informatie om dit te onderbouwen.>
+De app is afgewerkt. Er kan ingelogd worden met google en het leaderboard wordt weergegeven,en er kan een aangepaste versie van flappy bird gespeeld worden. 
+Het gehele resultaat is ook geupload op de playstore en beschikbaar op volgende link:
+    https://play.google.com/store/apps/details?id=com.odisee.project2game&hl=nl
+Ook het overzichtsrapport is afgewerkt.
+    
+
 
 Reflectie:
+ 
+ Alle originele einddoelen zijn bereikt, de app is afgewerkt met login en er is een overzichtsrapport geschreven.
+ 
+ Qua design kan de app nog een pak beter, het vogeltje is bijvoorbeeld heel vlug getekend omdat er copyright op de originele vogel stond.
+ Ook het menu is niet duidelijk dus daar moeten de knoppen nog opnieuw gemaakt worden.
+ 
+ Qua gameplay zijn er ook fouten opgedoken bij vrienden die de app gebruiken op iets oudere modellen, 
+ de locatiewaardes die bepaald worden door libgdx wanneer het scherm aangeraakt wordt blijken soms te verschillen.
+ Een ander probleem dat opduikt is dat de vorm van de vogel een cirkel/ovaal is en de buizen rectangles zijn,
+ via libGDX kan geen collision waargenomen worden tussen een rectangle en een cirkel dus is de hitbox van de vogel te groot.
+ 
+ Het gebruik van de API ging ook niet optimaal, ik had eerst de verkeerde api gebruikt en eenmaal ik de juiste api gebruikte, traden er onverklaarbare fouten op.
+ Er zijn ook veel details die nodig zijn voor de API correct te laten werken maar die nergens in de tutorials vermeld staan.
+ Als ik het project opnieuw maakte in een poging om het te laten werken, lukt het van de eerste keer.
 
-<Geef hier een reflectie over je aanpak, je originele einddoelen, en je resultaat: Wat was goed?
- Wat had beter gekund? Waren er alternatieven voor je aanpak? Wat zou je achteraf gezien anders
- gedaan hebben? Hoe zou je je nog verder kunnen profileren in de richting van je onderwerp? >
+ Volgens mij heb ik het project ook wel goed aangepakt. Misschien had ik wel eerst meer moeten opzoeken over de api zodat ik niet eerst een verkeerde zou implementeren.
+ 
 
 
 Inhoud Portfolio:
@@ -236,8 +253,12 @@ Bronnenlijst:
 
 Zelfevaluatie:
 
-<Geef jezelf hier een score (gaande van 'NVT' tot 'A') voor de items die in het 
-evaluatiedocument een witte achtergrond hebben>
+Nieuw verworven kennis          A
+Toepassing aangetoond           A-B
+Planning                        B
+Analyse noden                   NVT
+initiatief - inzet              A
+rapportering                    B
 
 
 
