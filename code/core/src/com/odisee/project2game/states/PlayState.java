@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.odisee.project2game.Game;
 import com.odisee.project2game.sprites.BadTube;
@@ -22,9 +21,6 @@ public class PlayState extends State {
     private final BadTube badTube;
     private Bird bird;
     private Texture background;
-    int posXBck1=0,posXBck2=0;
-
-    private Vector2 groundPos1, groundPos2;
 
     private Texture ground;
     private Texture one;
@@ -41,7 +37,6 @@ public class PlayState extends State {
 
     private static final int TUBE_SPACING = 150;
     private static final int TUBE_COUNT = 5;
-    //private static final int TUBE_COUNT = 5;
 
     private Array<Tube> tubes;
     private double addMoving;
@@ -69,9 +64,6 @@ public class PlayState extends State {
 
         heightScreen = cam.viewportHeight;
 
-        /*groundPos1 = new Vector2(cam.position.x-cam.viewportWidth/2, GROUND_Y_OFFSET);
-        groundPos2 = new Vector2(cam.position.x-cam.viewportWidth/2 + ground.getWidth(), GROUND_Y_OFFSET);*/
-
         tubes = new Array<Tube>();
 
         coin  = new Coin((float)(TUBE_SPACING*0.5));
@@ -83,10 +75,6 @@ public class PlayState extends State {
         for (int i = 1; i <= TUBE_COUNT; i++) {
             tubes.add(new Tube(i * (TUBE_SPACING + Tube.TUBEWIDTH)+100));
         }
-    }
-
-    public double getScore() {
-        return score;
     }
 
     @Override
@@ -137,7 +125,7 @@ public class PlayState extends State {
             if (cam.position.x - (cam.viewportWidth / 2) > tube.getPosTopTube().x + tube.getTopTube().getWidth()) {
                 tube.repositionX(tube.getPosTopTube().x + (Tube.TUBEWIDTH + TUBE_SPACING)*TUBE_COUNT );
             }
-            // let a tube move every +-62 points
+            // let an additional tube move every +-62 points
             if(addMoving >= 62 ) {
                 if(!tube.isMoving()) {
                     addMoving -= 71;
@@ -247,15 +235,6 @@ public class PlayState extends State {
 
         sb.draw(ground, cam.position.x - (cam.viewportWidth/2), 0);
         sb.end();
-    }
-
-    /**
-     * get the height of the screen
-     *
-     * @return height of screen
-     */
-    public double getHeightScreen() {
-        return heightScreen;
     }
 
     @Override

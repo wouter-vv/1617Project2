@@ -13,7 +13,6 @@ import com.odisee.project2game.states.LoginState;
 public class Game extends ApplicationAdapter {
     private static Preferences preferences;
     SpriteBatch batch;
-	Texture img;
     public static final int HEIGHT = 480;
     public static final int WIDTH = 800;
 
