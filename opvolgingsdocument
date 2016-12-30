@@ -121,8 +121,35 @@ Evaluatie 2
 30 november
     - update gameplay, buizen bewegen
     
-2 december
-    - beta versie op de playstore gezet
+-------------------
+    
+12 december
+    - Toevoegen lokale highscore met behulp van shared preferences
+    - Auth API verwijderd uit het project en enkel Games overgehouden
+    
+13 december
+    - poging tot maken van apk
+    - start overzichtsrapport maken
+
+16 december
+    - google leaderboards werken niet meer
+
+19 december
+    - portfolio toegevoegd
+
+22-23 december
+    - nieuw project gemaakt op aanraden van Mr Demeester, alles werkt terug
+
+25 december
+    - update gameplay, coins en klikbare buizen
+    
+26 december
+    - app toegevoegd aan de playstore
+    
+27 december
+    - bug met leaderboards in release APK opgelost
+    
+
     
 
 =================================================================================
