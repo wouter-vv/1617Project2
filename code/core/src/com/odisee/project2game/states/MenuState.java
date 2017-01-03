@@ -9,9 +9,10 @@ import com.badlogic.gdx.math.Vector3;
 import com.odisee.project2game.Game;
 
 /**
+ * menu with 2 buttons, one to play and another to show the leaderboard
+ *
  * Created by Wouter Vande Velde on 26/10/2016.
  */
-
 public class MenuState extends State {
     private Texture background;
     private Texture playBtn;
@@ -25,10 +26,6 @@ public class MenuState extends State {
         bounds = new Rectangle(Game.WIDTH /2, Game.HEIGHT / 2-playBtn.getHeight()*2, playBtn.getWidth()*2, playBtn.getHeight()*2);
         bounds2 = new Rectangle(Game.WIDTH /2, Game.HEIGHT / 2+playBtn.getHeight()-10, playBtn.getWidth()*2, playBtn.getHeight()*2);
     }
-
-
-
-
 
     @Override
     public void handleInput() {

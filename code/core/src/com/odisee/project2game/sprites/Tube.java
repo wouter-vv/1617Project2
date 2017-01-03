@@ -8,6 +8,8 @@ import com.odisee.project2game.Game;
 import java.util.Random;
 
 /**
+ * Tube entity
+ *
  * Created by Wouter Vande Velde on 26/10/2016.
  */
 

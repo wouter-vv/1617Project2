@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import java.util.Random;
 
 /**
+ * entity of the blue moving tube that has to be clicked to remove
+ *
  * Created by Wouter Vande Velde on 24/12/2016.
  */
 

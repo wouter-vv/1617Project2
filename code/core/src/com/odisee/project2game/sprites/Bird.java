@@ -9,6 +9,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 /**
+ * entity of the bird
+ *
  * Created by Wouter Vande Velde on 26/10/2016.
  */
 
@@ -35,13 +37,16 @@ public class Bird {
         position = new Vector3(x,y,0);
         velocity = new Vector3(0,0,0);
         texture = new Texture("bird2.png");
-        //texture = new Texture("birdanimation.png");
-        //birdAnimation = new Animation(new TextureRegion(texture), 3, 0.5f);
 
         flap = Gdx.audio.newSound(Gdx.files.internal("sfx_wing.ogg"));
         bounds = new Rectangle(x,y,texture.getWidth(),texture.getHeight());
     }
 
+    /**
+     * get the height of the bird
+     *
+     * @return height of bird
+     */
     public float getHeight() {
         return texture.getHeight();
     }
@@ -60,15 +65,26 @@ public class Bird {
         bounds.setPosition(position.x,position.y);
     }
 
+    /**
+     * set the speed to 250 if the bird has to jump
+     */
     public void jump() {
         velocity.y=250;
         flap.play(0.5f);
     }
 
+    /**
+     * if the bird hits the ceiling, set speed to 0
+     */
     public void ceiling() {
         velocity.y=0;
     }
 
+    /**
+     * get bounds of bird
+     *
+     * @return bounds of bird
+     */
     public Rectangle getBounds() {
         return bounds;
     }

@@ -8,6 +8,8 @@ import com.odisee.project2game.Game;
 import java.util.Random;
 
 /**
+ * entity of the coin
+ *
  * Created by Wouter Vande Velde on 24/12/2016.
  */
 
@@ -47,9 +49,6 @@ public class Coin {
         return coin;
     }
 
-    public void setCoin(Texture coin) { this.coin = coin; }
-
-
     /**
      * return the position of coin
      *
@@ -72,7 +71,6 @@ public class Coin {
         boundsCoin.setPosition(posCoin.x, posCoin.y);
     }
 
-
     /**
      * checks if there is a collision between bird and coin
      *
@@ -90,10 +88,18 @@ public class Coin {
         coin.dispose();
     }
 
+    /**
+     * method to move the coin 25 pixels if needed
+     */
     public void moveCoin() {
         posCoin.x += 25;
     }
 
+    /**
+     * get the bounds of the coin to detect collision
+     *
+     * @return bounds coin
+     */
     public Rectangle getBounds() {
         return boundsCoin;
     }

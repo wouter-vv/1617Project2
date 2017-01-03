@@ -127,6 +127,9 @@ public class GoogleApiActivity extends FragmentActivity implements
             editor.putString("highscoreOwner", "no owner");
         }
         editor.commit();
+        /**
+         * releasing an official apk on the play store requires the achievements to be implemented, dummy implementation
+         */
         if(mGoogleApiClient.isConnected()) {
             Games.Achievements.unlock(mGoogleApiClient, "CgkI2Y6BmvQZEAIQAg");
             Games.Achievements.unlock(mGoogleApiClient, "CgkI2Y6BmvQZEAIQAw");

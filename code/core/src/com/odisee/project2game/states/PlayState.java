@@ -12,6 +12,8 @@ import com.odisee.project2game.sprites.Coin;
 import com.odisee.project2game.sprites.Tube;
 
 /**
+ * state in which the game is played
+ *
  * Created by Wouter Vande Velde on 26/10/2016.
  */
 
@@ -168,10 +170,12 @@ public class PlayState extends State {
             bird.ceiling();
         }
 
+        // add 30 points if coin is taken
         if (coinTaken ) {
             score += 30;
         }
 
+        // remove 15 points if a tube is removed
         if (tubeClicked ) {
             score -= 15;
         }
@@ -196,7 +200,7 @@ public class PlayState extends State {
         sb.draw(coin.getCoin(), coin.getPosCoin().x, coin.getPosCoin().y);
         sb.draw(badTube.getBadTube(), badTube.getPosBadTube().x, badTube.getPosBadTube().y);
 
-        //draw the current score
+        //draw the current score, a bit obsolete but used for good graphics
         String strScore = "" + (int)score;
         int widthStrScore = strScore.length() * 27;
         for (int i = 0; i < strScore.length(); i++ ) {

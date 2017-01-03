@@ -8,6 +8,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.odisee.project2game.Game;
 
 /**
+ * State to show when the game is over
+ *
  * Created by Wouter Vande Velde on 26/10/2016.
  */
 
@@ -69,13 +71,7 @@ public class EndState extends State {
         highscoreOwner = prefs.getString("currPlayer");
         prefs.putInteger("currScore", score);
         prefs.flush();
-
-
     }
-
-
-
-
 
     @Override
     public void handleInput() {
@@ -84,7 +80,7 @@ public class EndState extends State {
             try {
                 Thread.sleep(2000);
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
             drawn = 1;
         } else  if (drawn == 1){
@@ -104,7 +100,6 @@ public class EndState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
-
         sb.setProjectionMatrix(cam.combined);
         //first open the spritebatch and add everything in it
         sb.begin();
@@ -145,7 +140,6 @@ public class EndState extends State {
             else if (strScore.charAt(i) == 57) {
                 sb.draw(nine, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, OFFSET_Y + zero.getHeight()*3/2);
             }
-
         }
         // show continue after a while
         if(drawn == 1) {

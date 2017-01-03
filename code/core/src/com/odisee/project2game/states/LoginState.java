@@ -22,19 +22,11 @@ public class LoginState extends State {
         this.gsm = gsm;
         logo = new Texture("logo2.png");
 
-/*        prefs = Game.getPrefs();
-        int highscore = prefs.getInteger("highscore");
-        if(highscore == 0) {
-            prefs.putInteger("highscore", 0);
-            prefs.putString("highscoreOwner", "no-one");
-        }*/
-
         cam.setToOrtho(false, Game.WIDTH /2, Game.HEIGHT / 2);
         background = new Texture("bgs.png");
 
         Game.myGameCallback.onStartActivityLogin();
     }
-
 
     @Override
     public void handleInput() {
@@ -42,9 +34,7 @@ public class LoginState extends State {
         if(Gdx.input.justTouched()) {
             gsm.set(new MenuState(gsm));
             cam.unproject(tmp);
-
         }
-
     }
 
     @Override

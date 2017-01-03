@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.odisee.project2game.Game;
 
 /**
+ * State to show the highscore
  * Created by Wouter Vande Velde on 10/12/2016.
  */
 
@@ -76,8 +77,6 @@ public class HighscoreState extends State{
             }
             gsm.set(new MenuState(gsm));
         }
-
-
     }
 
     @Override
@@ -153,14 +152,10 @@ public class HighscoreState extends State{
             else if (strScore.charAt(i) == 57) {
                 sb.draw(nine, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, cam.viewportHeight - textHeight*7);
             }
-
         }
-
         sb.draw(playBtn, cam.position.x-playBtn.getWidth() / 2,cam.viewportHeight - textHeight*18);
         sb.end();
     }
-
-
 
     @Override
     public void dispose() {
@@ -178,5 +173,4 @@ public class HighscoreState extends State{
         playBtn.dispose();
         System.out.println("HighscoreState disposed");
     }
-
 }

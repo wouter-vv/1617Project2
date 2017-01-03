@@ -236,13 +236,13 @@ Voor de rest lijkt me je zelfevaluatie redelijk correct te zijn.
 
 
 =================================================================================
-Eindrapportering - <datum van ingave>
+Eindrapportering - 08/01/2017
 =================================================================================
 
 
 Eindrapportering:
 
-De app is afgewerkt. Er kan ingelogd worden met google en het leaderboard wordt weergegeven,en er kan een aangepaste versie van flappy bird gespeeld worden. 
+De app is afgewerkt. Er kan ingelogd worden met google en het leaderboard wordt weergegeven,en er kan een alternatieve versie van flappy bird gespeeld worden. 
 Het gehele resultaat is ook geupload op de playstore en beschikbaar op volgende link:
     https://play.google.com/store/apps/details?id=com.odisee.project2game&hl=nl
 Ook het overzichtsrapport is afgewerkt.
@@ -253,13 +253,13 @@ Reflectie:
  
  Alle originele einddoelen zijn bereikt, de app is afgewerkt met login en er is een overzichtsrapport geschreven.
  
- Qua design kan de app nog een pak beter, het vogeltje is bijvoorbeeld heel vlug getekend omdat er copyright op de originele vogel stond.
+ Qua design kan de app nog een pak beter, het vogeltje is bijvoorbeeld heel vlug getekend omdat er copyright op het eerste vogeltje stond.
  Ook het menu is niet duidelijk dus daar moeten de knoppen nog opnieuw gemaakt worden.
  
  Qua gameplay zijn er ook fouten opgedoken bij vrienden die de app gebruiken op iets oudere modellen, 
  de locatiewaardes die bepaald worden door libgdx wanneer het scherm aangeraakt wordt blijken soms te verschillen.
- Een ander probleem dat opduikt is dat de vorm van de vogel een cirkel/ovaal is en de buizen rectangles zijn,
- via libGDX kan geen collision waargenomen worden tussen een rectangle en een cirkel dus is de hitbox van de vogel te groot.
+ Een ander probleem is dat de vorm van de vogel een cirkel/ovaal is en de buizen rectangles zijn,
+ via libGDX kan geen collision waargenomen worden tussen een rectangle en een cirkel dus is de hitbox van de vogel iets te groot.
  
  Het gebruik van de API ging ook niet optimaal, ik had eerst de verkeerde api gebruikt en eenmaal ik de juiste api gebruikte, traden er onverklaarbare fouten op.
  Er zijn ook veel details die nodig zijn voor de API correct te laten werken maar die nergens in de tutorials vermeld staan.
@@ -271,12 +271,41 @@ Reflectie:
 
 Inhoud Portfolio:
 
-<Geef hier een overzicht van de informatie die je portfolio bevat> 
+Doelstelling 1	
+	Overzichtsrapport	
+		Algemeen	
+		Ontwikkeling	
+		Programmeertaal	
+		Hardware	
+Doelstelling 2	
+	LibGDX	
+	Het spel	
+		Collision detection	
+		File i/o naar intern geheugen	
+		Graphics	
+		Camera	
+		Geluid	
+Doelstelling 3	
+	Google API	
+	Leaderboard	
+Opvolgingsdocument	
+Bibliography	
+Code
+
 
 
 Bronnenlijst:
 
-<Geef hier een lijst van gebruikte bronnen volgens de IEEE-standaard>
+
+[1] 	G. Sims, „Google Play Store vs the Apple App Store: by the numbers (2015),” AndroidAuthority, 20 april 2015. [Online]. Available: http://www.androidauthority.com/google-play-store-vs-the-apple-app-store-601836/.
+[2] 	P. Rubens, „10 Things You Should Know About Apple's Swift,” CIO, 21 juli 2014. [Online]. Available: http://www.cio.com/article/2456100/mobile-development/10-things-you-should-know-about-apples-swift.html.
+[3] 	M. Klaus, „Advantages and Disadvantages of Java Application Development,” Selfgrowth, [Online]. Available: http://www.selfgrowth.com/articles/advantages-and-disadvantages-of-java-application-development.
+[4] 	M. Zechner, „Goals and Features,” LibGDX, 2013. [Online]. Available: https://libgdx.badlogicgames.com/features.html.
+[5] 	Google, „Google Developers Console,” Google, [Online]. Available: https://play.google.com/apps/publish/?dev_acc=16525306877658257287#AppListPlace.
+[6] 	Google , „Google API Console,” Google , [Online]. Available: https://console.developers.google.com/apis/credentials?project=project2-f5a95&hl=nl.
+[7] 	W. V. Velde, „Project2v2,” Odisee, [Online]. Available: https://play.google.com/store/apps/details?id=com.odisee.project2game&hl=nl.
+[8] 	Google, „Start Integrating Google Sign-In into Your Android App,” Google, 26 oktober 2016. [Online]. Available: https://developers.google.com/identity/sign-in/android/start-integrating.
+
 
 Zelfevaluatie:
 

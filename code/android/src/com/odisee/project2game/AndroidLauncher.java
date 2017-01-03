@@ -6,6 +6,11 @@ import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
+/**
+ * class to start and initialize the game for android
+ *
+ * @author Wouter Vande Velde
+ */
 public class AndroidLauncher extends AndroidApplication implements Game.MyGameCallback {
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -20,6 +25,9 @@ public class AndroidLauncher extends AndroidApplication implements Game.MyGameCa
 		initialize(new Game(), config);
 	}
 
+	/**
+	 * start the GoogleApiActivity
+	 */
 	@Override
 	public void onStartActivityLogin() {
 		Intent intent = new Intent(this, GoogleApiActivity.class);
