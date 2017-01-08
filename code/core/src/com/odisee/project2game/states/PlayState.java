@@ -200,7 +200,7 @@ public class PlayState extends State {
         sb.draw(coin.getCoin(), coin.getPosCoin().x, coin.getPosCoin().y);
         sb.draw(badTube.getBadTube(), badTube.getPosBadTube().x, badTube.getPosBadTube().y);
 
-        //draw the current score, a bit obsolete but used for good graphics
+        //draw the current score, a bit inefficient but used for good graphics
         String strScore = "" + (int)score;
         int widthStrScore = strScore.length() * 27;
         for (int i = 0; i < strScore.length(); i++ ) {
