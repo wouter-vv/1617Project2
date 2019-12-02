@@ -47,8 +47,8 @@ public class LoginState extends State {
         sb.setProjectionMatrix(cam.combined);
         //first open the spritebatch and add everything in it
         sb.begin();
-        sb.draw(background,0,0);
-        sb.draw(logo, cam.position.x-logo.getWidth() / 2,cam.position.y-logo.getHeight() / 2);
+        sb.draw(background,-100,0,804,247);
+        sb.draw(logo, cam.position.x-logo.getWidth() / 2 / 2,(int)(cam.position.y-logo.getHeight() / 2 / 2.5),250,110);
         sb.end();
     }
 

@@ -141,6 +141,11 @@ public class PlayState extends State {
 
             // if collision, game is over
             if(tube.collides(bird.getBounds())) {
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 gsm.set(new EndState(gsm, (int)score));
             }
 

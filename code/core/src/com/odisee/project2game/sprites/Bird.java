@@ -39,7 +39,7 @@ public class Bird {
         texture = new Texture("bird2.png");
 
         flap = Gdx.audio.newSound(Gdx.files.internal("sfx_wing.ogg"));
-        bounds = new Rectangle(x,y,texture.getWidth(),texture.getHeight());
+        bounds = new Rectangle(x,y,texture.getWidth()-12,texture.getHeight()-8);
     }
 
     /**
@@ -62,7 +62,7 @@ public class Bird {
             position.y = 0;
         }
         velocity.scl(1/dt);
-        bounds.setPosition(position.x,position.y);
+        bounds.setPosition(position.x+6,position.y+4);
     }
 
     /**

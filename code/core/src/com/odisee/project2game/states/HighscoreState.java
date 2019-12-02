@@ -19,7 +19,6 @@ public class HighscoreState extends State{
     private final int highscore;
     private final String currPlayer;
     private final String highscoreOwner;
-    private Texture playBtn;
     private Preferences prefs;
     private GlyphLayout glyphLayout;
     private Texture background;
@@ -55,7 +54,6 @@ public class HighscoreState extends State{
         nine = new Texture("9s.png");
         zero = new Texture("0s.png");
         background = new Texture("backgroundSimple.png");
-        playBtn = new Texture("playbtn.png");
 
         glyphLayout = new GlyphLayout();
         font = new BitmapFont();
@@ -153,7 +151,6 @@ public class HighscoreState extends State{
                 sb.draw(nine, cam.position.x - widthStrScore / 2 + widthStrScore / strScore.length() * i, cam.viewportHeight - textHeight*7);
             }
         }
-        sb.draw(playBtn, cam.position.x-playBtn.getWidth() / 2,cam.viewportHeight - textHeight*18);
         sb.end();
     }
 
@@ -170,7 +167,6 @@ public class HighscoreState extends State{
         eight.dispose();
         nine.dispose();
         zero.dispose();
-        playBtn.dispose();
         System.out.println("HighscoreState disposed");
     }
 }
